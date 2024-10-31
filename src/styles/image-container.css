@@ -1,0 +1,243 @@
+.about-container {
+  height: 55.5rem;
+  top: -7rem;
+  position: relative;
+  /* background: url("/images/about.jpg") no-repeat left; */
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover !important;
+  z-index: 0;
+}
+
+.about-text {
+  font-size: 46px;
+}
+
+.help-container {
+  height: 50.5rem;
+  top: -5rem;
+  position: relative;
+  /* background: url("/images/help.jpg") no-repeat left; */
+
+  background-repeat: no-repeat;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover !important;
+  z-index: 0;
+}
+
+.help-text {
+  font-size: 52px;
+  margin-top: 9rem;
+}
+
+.help-subText {
+  font-size: 32px;
+}
+
+/* Apply styles to screens with a width of 767px or less */
+@media only screen and (max-width: 1324px) {
+  .about-container {
+    height: 45.188rem;
+    top: 0rem;
+    margin-bottom: 5rem;
+  }
+
+  .about-text {
+    font-size: 36px;
+    margin-top: -4rem;
+  }
+  .help-text {
+    font-size: 48px;
+    margin-top: 7rem;
+  }
+
+  .help-subText {
+    font-size: 28px;
+  }
+}
+
+/* Apply styles to screens with a width of 767px or less */
+@media only screen and (max-width: 1200px) {
+  .about-container {
+    height: 40.188rem;
+    top: 0rem;
+  }
+  .about-text {
+    font-size: 36px;
+    /*margin-top:;*/
+  }
+  .help-container {
+    height: 40.5rem;
+    top: -2rem;
+  }
+
+  .help-text {
+    font-size: 36px;
+    margin-top: 4rem;
+  }
+
+  .help-subText {
+    font-size: 24px;
+  }
+}
+
+/* Apply styles to screens with a width of 767px or less */
+@media only screen and (max-width: 1024px) {
+  .help-container {
+    height: 35.188rem;
+    top: 0rem;
+    margin-bottom: 5rem;
+  }
+  .about-container {
+    height: 32.188rem;
+    top: 0rem;
+  }
+  .about-text {
+    font-size: 28px;
+    margin-top: 5rem;
+  }
+  .help-text {
+    font-size: 32px;
+    margin-top: 4rem;
+    margin-right: 3rem !important;
+  }
+
+  .help-subText {
+    font-size: 20px;
+    margin-right: 3rem !important;
+    line-height: 34px !important;
+  }
+}
+
+@media only screen and (max-width: 870px) {
+  .help-container {
+    height: 28.188rem;
+    top: -2rem;
+    margin-bottom: 1.5rem;
+  }
+  .about-container {
+    height: 28.188rem;
+    top: 0rem;
+  }
+  .about-text {
+    font-size: 24px;
+    margin-top: 5rem;
+  }
+  .help-text {
+    font-size: 28px;
+    margin-top: 4rem;
+    margin-right: 3rem !important;
+    width: 45% !important;
+  }
+
+  .help-subText {
+    font-size: 19px;
+    margin-right: 3rem !important;
+    line-height: 34px !important;
+    width: 45% !important;
+  }
+}
+
+/* Apply styles to screens with a width of 767px or less */
+@media only screen and (max-width: 767px) {
+  .about-container {
+    height: 72.188rem;
+    top: -2rem;
+    /* background: url("/images/about-sm.jpg") no-repeat bottom; */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover !important;
+  }
+  .about-text {
+    font-size: 36px;
+    margin-top: 5rem;
+  }
+  .help-text {
+    font-size: 24px;
+    margin-top: 7rem;
+    margin-right: 0rem !important;
+    width: 50% !important;
+    text-align: left;
+  }
+  .help-subText {
+    font-size: 16px;
+    margin-right: 0rem !important;
+    line-height: 34px !important;
+    text-align: left;
+    width: 50% !important;
+  }
+  .image-container {
+    align-items: flex-end !important;
+  }
+}
+
+/* Apply styles to screens with a width of 767px or less */
+@media only screen and (max-width: 612px) {
+  .help-container {
+    height: 72.188rem;
+    top: -2rem;
+    /* background: url("/images/help-sm.jpg") no-repeat bottom; */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover !important;
+    margin-bottom: 1.5rem;
+  }
+  .about-container {
+    height: 72.188rem;
+    top: -3rem;
+    /* background: url("/images/about-sm.jpg") no-repeat bottom; */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover !important;
+  }
+  .about-text {
+    font-size: 36px;
+    margin-top: 7rem;
+  }
+
+  .image-container {
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+  .help-text {
+    font-size: 48px;
+    margin-top: 4rem;
+    width: 90% !important;
+    text-align: center;
+  }
+
+  .help-subText {
+    font-size: 19px;
+    line-height: 34px !important;
+    width: 100% !important;
+    text-align: center;
+  }
+}
+
+/* Apply styles to screens with a width of 767px or less */
+@media only screen and (max-width: 530px) {
+  .help-container {
+    height: 55.188rem;
+    top: -2rem;
+    /* background: url("/images/help-sm.jpg") no-repeat bottom; */
+
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover !important;
+  }
+  .about-container {
+    height: 60.188rem;
+    top: -3rem;
+    /* background: url("/images/about-sm.jpg") no-repeat bottom; */
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover !important;
+  }
+  .about-text {
+    font-size: 32px;
+    margin-top: 7rem;
+  }
+}
