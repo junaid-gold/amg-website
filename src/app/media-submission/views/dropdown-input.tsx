@@ -21,6 +21,7 @@ const DropdownInput = ({ value, title, customLayoutOptionId }: DropdownInputProp
   const selectedOne = cartItem?.product_option?.extension_attributes?.custom_options?.find((option) => option?.option_id?.toString() === value?.option_id?.toString())
 
   const pathname = usePathname()
+
   return (
     <SelectedButtonComponent
       className={
