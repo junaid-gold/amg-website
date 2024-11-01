@@ -32,15 +32,13 @@ export async function POST(req: NextRequest) {
             },
         });
 
-        setTimeout(() => {
-            // TODO: Removing Await so it can't wait and return the response
-            axios.post(`${CREATE_INSURANCE_AND_SHIPPING}/?id=${cartData?.customer?.id}`, {
-                headers: {
-                    Authorization: `Bearer ${session?.accessToken}`,
-                    "Content-Type": "application/json",
-                }
-            })
-        }, 1000)
+        // TODO: Removing Await so it can't wait and return the response
+        await axios.post(`${CREATE_INSURANCE_AND_SHIPPING}/?id=${cartData?.customer?.id}`, {
+            headers: {
+                Authorization: `Bearer ${session?.accessToken}`,
+                "Content-Type": "application/json",
+            }
+        })
 
         return NextResponse.json(data);
     } catch (error) {

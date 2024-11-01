@@ -31,15 +31,12 @@ export async function PUT(req: NextRequest) {
                 "Content-Type": "application/json",
             },
         });
-
-        setTimeout(() => {
-        axios.post(`${CREATE_INSURANCE_AND_SHIPPING}/?id=${cartData?.customer?.id}`, {
+        await axios.post(`${CREATE_INSURANCE_AND_SHIPPING}/?id=${cartData?.customer?.id}`, {
             headers: {
                 Authorization: `Bearer ${session?.accessToken}`,
                 "Content-Type": "application/json",
             }
         })
-    },1000)
         return NextResponse.json(data);
     } catch (error) {
         if (axios.isAxiosError(error)) {
