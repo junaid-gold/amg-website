@@ -60,7 +60,10 @@ const Cart = ({ setOpenCart }: CartProps) => {
         }
       >
         <button
-          onClick={() => setOpenCart(false)}
+          onClick={() => {
+            setOpenCart(false)
+            setOpenCartGlobal(false)
+          }}
           className={"absolute top-10 right-10"}
         >
           <CancelIcon />
