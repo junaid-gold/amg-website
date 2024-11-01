@@ -21,8 +21,9 @@ export const getShippingAddress = async () => {
         return data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+                // redirect("/sign-out")
+            }
         }
     }
 };
@@ -41,8 +42,10 @@ export const getBillingAddress = async () => {
         return data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+
+                // redirect("/sign-out")
+            }
         }
     }
 };
@@ -55,8 +58,9 @@ export const changeUserPassword = async (payload: ChangePasswordFormSchemaType) 
         return await axios.put("/api/change-password", { currentPassword, newPassword: password })
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+                // redirect("/sign-out")
+            }
         }
     }
 }
@@ -76,8 +80,9 @@ export const getCustomerOrders = async () => {
         })
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+                // redirect("/sign-out")
+            }
         }
     }
 }
@@ -100,8 +105,9 @@ export const getMySubmissions = async () => {
         return data
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+                // redirect("/sign-out")
+            }
         }
     }
 }
@@ -118,8 +124,9 @@ export const getCustomerAddresses = async () => {
         return data?.addresses
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+                // redirect("/sign-out")
+            }
         }
     }
 }
@@ -136,8 +143,9 @@ export const getCurrentCustomer = async () => {
         return data
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
-                redirect("/sign-out")
+            if (error?.status === 401) {
+                // redirect("/sign-out")
+            }
         }
     }
 }
@@ -187,7 +195,7 @@ export const deletePaymentMethod = async (paymentProfileId: string) => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                redirect("/sign-out")
+                // redirect("/sign-out")
             }
         }
     }

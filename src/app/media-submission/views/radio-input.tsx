@@ -18,7 +18,6 @@ const RadioInput = ({ value }: RadioStepProps) => {
         )
 
     const isSelected = selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
-    console.log(isSelected)
     return (
         <div
             className={

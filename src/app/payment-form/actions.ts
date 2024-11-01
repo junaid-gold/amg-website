@@ -17,7 +17,7 @@ export const getCartMineTotal = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                redirect("/sign-out")
+                // redirect("/sign-out")
             }
         }
     }
@@ -39,7 +39,7 @@ export const getAddresses = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                redirect("/sign-out")
+                // redirect("/sign-out")
             }
         }
     }
@@ -62,7 +62,7 @@ export const getPaymentMethods = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                redirect("/sign-out")
+                // redirect("/sign-out")
             }
         }
     }
@@ -116,7 +116,7 @@ export const getCartCoupons = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                redirect("/sign-out")
+                // redirect("/sign-out")
             }
         }
     }
