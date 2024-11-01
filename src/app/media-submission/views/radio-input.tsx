@@ -29,12 +29,12 @@ const RadioInput = ({ value }: RadioStepProps) => {
         >
             <div className={"flex items-center relative gap-6"}>
                 <input
-                    onClick={(e) => {
-                        if (isSelected) {
-                            e.preventDefault();
-                            removeCustomOption(value?.option_id);
-                        }
-                    }}
+                    // onClick={(e) => {
+                    //     if (isSelected) {
+                    //         e.preventDefault();
+                    //         removeCustomOption(value?.option_id);
+                    //     }
+                    // }}
                     onChange={(e) => {
                         if (!isSelected) {
                             updateCustomOption(
