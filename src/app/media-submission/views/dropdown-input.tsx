@@ -21,7 +21,7 @@ const DropdownInput = ({ value, title, customLayoutOptionId }: DropdownInputProp
   const selectedOne = cartItem?.product_option?.extension_attributes?.custom_options?.find((option) => option?.option_id?.toString() === value?.option_id?.toString())
 
   const pathname = usePathname()
-
+  const isSelected = selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
   return (
     <SelectedButtonComponent
       className={
@@ -29,9 +29,13 @@ const DropdownInput = ({ value, title, customLayoutOptionId }: DropdownInputProp
           ? "min-w-[151px] h-[201px]  max-w-[151px] lg:min-w-0 lg:max-w-none lg:flex-1"
           : ""
       }
-      selected={selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()}
+      selected={isSelected}
       onClick={() => {
-        updateCustomOption(value.option_id, value?.option_type_id, value?.price)
+        if (isSelected) {
+          removeCustomOption(value?.option_id)
+        } else {
+          updateCustomOption(value.option_id, value?.option_type_id, value?.price)
+        }
         if (title === "Type" || title === "How do you want your record displayed?") {
           if (value?.title !== "Custom Layout" && value?.title !== "") {
             removeCustomOption(299138)

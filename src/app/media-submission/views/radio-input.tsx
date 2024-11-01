@@ -8,7 +8,7 @@ interface RadioStepProps {
 }
 
 const RadioInput = ({ value }: RadioStepProps) => {
-    const { updateCustomOption, cartItem } = useCartItem()
+    const { updateCustomOption, cartItem, removeCustomOption } = useCartItem()
     const pathname = usePathname()
     const selectedOne = cartItem?.product_option?.extension_attributes?.custom_options?.find((option) => option?.option_id?.toString() === value?.option_id?.toString())
 
@@ -16,6 +16,9 @@ const RadioInput = ({ value }: RadioStepProps) => {
         cartItem?.product_option?.extension_attributes?.custom_options?.find(
             (custom_option) => custom_option?.option_id === value?.option_id
         )
+
+    const isSelected = selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
+    console.log(isSelected)
     return (
         <div
             className={
@@ -26,16 +29,22 @@ const RadioInput = ({ value }: RadioStepProps) => {
         >
             <div className={"flex items-center relative gap-6"}>
                 <input
-                    onChange={(e) => {
-                        updateCustomOption(
-                            value?.option_id,
-                            value?.option_type_id,
-                            value?.price
-                        );
+                    onClick={(e) => {
+                        if (isSelected) {
+                            e.preventDefault();
+                            removeCustomOption(value?.option_id);
+                        }
                     }}
-                    checked={selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()}
-
-
+                    onChange={(e) => {
+                        if (!isSelected) {
+                            updateCustomOption(
+                                value?.option_id,
+                                value?.option_type_id,
+                                value?.price
+                            );
+                        }
+                    }}
+                    checked={isSelected}
                     className={"w-5 h-5 "}
                     type="radio"
                     id={value?.option_type_id?.toString()}
