@@ -14,8 +14,9 @@ export const getCustomerOrderDetails = async (increment_id: string) => {
         return data?.items?.[0]
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            if (error?.status === 401)
+            if (error?.status === 401) {
                 // redirect("/sign-out")
+            }
         }
     }
 }
