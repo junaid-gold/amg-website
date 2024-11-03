@@ -50,7 +50,7 @@ export const deleteItemFromCart = async (itemId: number) => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -66,7 +66,7 @@ export const clearItemFromCart = async (itemIds: string[]) => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -78,7 +78,7 @@ export const updateCartItemQuantity = async (payload: { itemId: string, cartItem
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }

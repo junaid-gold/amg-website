@@ -22,7 +22,7 @@ export const getShippingAddress = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -44,7 +44,7 @@ export const getBillingAddress = async () => {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
 
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -59,7 +59,7 @@ export const changeUserPassword = async (payload: ChangePasswordFormSchemaType) 
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -81,7 +81,7 @@ export const getCustomerOrders = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -106,7 +106,7 @@ export const getMySubmissions = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -125,7 +125,7 @@ export const getCustomerAddresses = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -144,7 +144,7 @@ export const getCurrentCustomer = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -195,7 +195,7 @@ export const deletePaymentMethod = async (paymentProfileId: string) => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }

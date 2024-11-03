@@ -13,9 +13,9 @@ export function formatAxiosError(error: AxiosError<ErrorResponse>): { status: nu
 
 export const errorHandler = (error: Error) => {
     if (axios.isAxiosError(error)) {
-        // if (error?.status === 401) {
-        //     window.location.href = '/sign-out'
-        // }
+        if (error?.status === 401) {
+            window.location.href = '/sign-out'
+        }
         const message = error.response?.data?.message || error.message || 'An unexpected error occurred';
 
         toast.error(message)

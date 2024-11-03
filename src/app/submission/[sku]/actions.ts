@@ -26,7 +26,7 @@ export const getMySubmissionDetails = async (sku: string) => {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
 
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }

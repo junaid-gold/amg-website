@@ -14,7 +14,7 @@ export const getProductType = async () => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -33,7 +33,7 @@ export const getOneProductType = async (sku: string) => {
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
@@ -55,7 +55,7 @@ export const updateCartItem = async (payload: { itemId: string, cartItem: any })
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
-                // redirect("/sign-out")
+                redirect("/sign-out")
             }
         }
     }
