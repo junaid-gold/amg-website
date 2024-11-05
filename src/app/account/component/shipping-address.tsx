@@ -23,9 +23,9 @@ const ShippingAddress = ({ countries, shippingAddress, className, headerTitle }:
 
               {"\n"}
               {shippingAddress?.company ? <>{shippingAddress?.company} {"\n"}</> : null}
-              {shippingAddress?.street?.[0]}  {shippingAddress?.street?.[1] ? `, ${shippingAddress?.street?.[1]}` : null}
+              {shippingAddress?.street?.[0]}{shippingAddress?.street?.[1] ? `, ${shippingAddress?.street?.[1]}` : null}
               {"\n"}
-              {shippingAddress?.city}, {shippingAddress?.region?.region}
+              {shippingAddress?.city}, {shippingAddress?.region?.region} {", "}
               {shippingAddress?.postcode}
               {"\n"}
               {shippingAddress?.country_id}

@@ -27,9 +27,9 @@ const BillingAddress = ({ countries, billingAddress, className, headerTitle }: B
                   {"\n"}
                   {billingAddress?.company ? <>{billingAddress?.company} {"\n"}</> : null}
 
-                  {billingAddress?.street?.[0]} {billingAddress?.street?.[1] ? `, ${billingAddress?.street?.[1]}` : null}
+                  {billingAddress?.street?.[0]} {billingAddress?.street?.[1] ? `,${billingAddress?.street?.[1]}` : null}
                   {"\n"}
-                  {billingAddress?.city}, {billingAddress?.region?.region}
+                  {billingAddress?.city}, {billingAddress?.region?.region} {", "}
                   {billingAddress?.postcode}
                   {"\n"}
                   {billingAddress?.country_id}
