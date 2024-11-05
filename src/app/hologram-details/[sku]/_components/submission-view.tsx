@@ -58,6 +58,7 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
   const pPackage = custom_attributes?.find(
     (custom_attribute) => custom_attribute?.attribute_code === "amg_sub_package"
   )
+
   return (
     <div className={"flex flex-col items-center justify-center w-full"}>
       <div className={"max-w-[90rem] p-8 lg:p-12 w-full"}>
@@ -85,7 +86,7 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                 custom_attribute?.attribute_code === "thumbnail"
             ) ? (
               <>
-                {productData?.media_gallery_entries?.map((media) => (
+                {productData?.media_gallery_entries?.filter((media) => media?.types?.length)?.map((media) => (
                   <div
                     key={media?.id}
                     style={{ backgroundColor: "white" }}
@@ -186,13 +187,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Artist
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {artist?.value}
@@ -204,13 +205,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Album
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {album?.value}
@@ -222,13 +223,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Release Year
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {releaseYear?.value}
@@ -240,13 +241,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Label
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {label?.value}
@@ -258,13 +259,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Catalog #
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {catalogNumber?.value}
@@ -276,13 +277,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Series
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {series?.value}
@@ -297,13 +298,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Hologram ID
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {hologramId?.value}
@@ -315,13 +316,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Date Graded
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {moment(dateGraded?.value)?.format("L")}
@@ -333,13 +334,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full sm:w-1/2 md:w-full lg:w-1/2"
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Master Grade
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       >
                         {masterGrade?.value}
@@ -353,13 +354,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       "flex items-start justify-start flex-col gap-1 mb-4 w-full "
                     }
                   >
-                    <p className={"font-theme-font-bold text-xl text-center"}>
+                    <p className={"font-theme-font-bold text-xl text-left"}>
                       Sub Grades
                     </p>
                     <div className={"flex gap-2 items-center"}>
                       <p
                         className={
-                          " text-center text-[14px] md:text-[24px] font-theme-font-light"
+                          " text-left text-[14px] md:text-[24px] font-theme-font-light"
                         }
                       ></p>
                     </div>
@@ -371,14 +372,14 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       }
                     >
                       <p
-                        className={"font-theme-font-bold text-base text-center"}
+                        className={"font-theme-font-bold text-base text-left"}
                       >
                         (P) Package
                       </p>
                       <div className={"flex gap-2 items-center"}>
                         <p
                           className={
-                            "text-center text-[14px] md:text-[24px] font-theme-font-light"
+                            "text-left text-[14px] md:text-[24px] font-theme-font-light"
                           }
                         >
                           {pPackage?.value}
@@ -391,14 +392,14 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                       }
                     >
                       <p
-                        className={"font-theme-font-bold text-base text-center"}
+                        className={"font-theme-font-bold text-base text-left"}
                       >
                         (M) Media
                       </p>
                       <div className={"flex gap-2 items-center"}>
                         <p
                           className={
-                            "text-center text-[14px] md:text-[24px] font-theme-font-light"
+                            "text-left text-[14px] md:text-[24px] font-theme-font-light"
                           }
                         >
                           {media?.value}

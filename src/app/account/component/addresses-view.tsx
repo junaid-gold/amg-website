@@ -27,6 +27,12 @@ const AddressesView = ({ addresses, countries }: AddressesViewProps) => {
             <div className={"xl:w-full"}>
               {/* Header */}
               <div className="bg-white w-fit justify-start items-start flex">
+
+                <div className="border-r border-r-[#F2F1F1] lg:border-r-theme-gray w-full max-w-[200px] min-w-[200px] p-6 justify-start items-center gap-2 flex">
+                  <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium leading-[21px]">
+                    Actions
+                  </div>
+                </div>
                 <div className="border-r border-r-[#F2F1F1] lg:border-r-theme-gray w-full max-w-[300px] min-w-[300px] p-6 justify-start items-center gap-2 flex">
                   <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium leading-[21px]">
                     First Name
@@ -65,11 +71,6 @@ const AddressesView = ({ addresses, countries }: AddressesViewProps) => {
                 <div className="border-r border-r-[#F2F1F1] lg:border-r-theme-gray w-full max-w-[200px] min-w-[200px] p-6 justify-start items-center gap-2 flex">
                   <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium leading-[21px]">
                     Phone
-                  </div>
-                </div>
-                <div className="border-r border-r-[#F2F1F1] lg:border-r-theme-gray w-full max-w-[200px] min-w-[200px] p-6 justify-start items-center gap-2 flex">
-                  <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium leading-[21px]">
-                    Actions
                   </div>
                 </div>
               </div>
