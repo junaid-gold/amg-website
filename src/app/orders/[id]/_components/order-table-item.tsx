@@ -21,7 +21,6 @@ const OrderTableItem = ({ itemData }: OrderTableItemProps) => {
 
     const product_options =
       itemData?.product_option?.extension_attributes?.custom_options
-    console.log(options, product_options)
     // Function to merge product_option values into options
     mergedOptions = options.map((option) => {
       // Find the matching product_option entry by option_id

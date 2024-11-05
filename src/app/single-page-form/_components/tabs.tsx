@@ -12,7 +12,6 @@ const Tabs = ({ data }: { data: Product }) => {
   const [loading, setLoading] = useState(true)
 
   const { cartItem, addSku, addPrice } = useCartItem()
-
   useEffect(() => {
     const skuToPush = localStorage.getItem("skuToPush")
     const priceToPush = localStorage.getItem("priceToPush")
