@@ -37,7 +37,7 @@ const AreaInput = ({ option }: AreaInputProps) => {
       placeholder={
         option?.title ===
           "Any Special Notes About This Submission? Please add any details that will assist in grading your item. Such as variations, exclusives, give-aways, limited edition numbers, signature names, etc."
-          ? "Any notes about this submission that you would like to share."
+          ? "Any notes about this submission that you would like to share?"
           : option?.title
       }
       value={value}
