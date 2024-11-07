@@ -50,7 +50,7 @@ const Tabs = ({ data }: { data: Product }) => {
     "Catalog Number (If Known)",
     "Release Year (If Known)",
     "Release Year (If Unknown)",
-    "Any notes about this submission that you would like to share?s",
+    "Any notes about this submission that you would like to share?",
   ]
 
   const selectedSkuOptions = data?.items?.find(
