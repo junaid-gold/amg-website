@@ -1,6 +1,10 @@
+"use client"
 import { JobType } from "@/types";
 
 const JobPostComponent = ({ data }: { data: JobType }) => {
+  const handleOpenEmail = () => {
+    window.location.href = 'mailto:jobs@audiomediagrading.com';
+  };
   return (
     <div
       className={
@@ -45,6 +49,7 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
         </div>
       </div>
       <button
+        onClick={handleOpenEmail}
         className={
           "w-[85%] md:w-[80%] lg:w-[20%] h-fit rounded-full border border-theme-black text-theme-black bg-transparent flex items-center justify-center px-2 py-3"
         }
