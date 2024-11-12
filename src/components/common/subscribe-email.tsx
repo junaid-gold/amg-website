@@ -1,12 +1,39 @@
 "use client"
 import React, { useState } from "react"
+import { LoaderIcon } from "react-hot-toast"
 
 const SubscribeEmail = () => {
   const [inputText, setInputText] = useState("")
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    setInputText("Thank you!")
+    setLoading(true)
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputText,
+        }),
+      })
+
+      if (response.status === 400) {
+        const result = await response.json()
+        setInputText("Email already exists !")
+      } else if (response.status === 200) {
+        const result = await response.json()
+        setInputText("Subscribed!")
+      }
+    } catch (error) {
+      console.log("ERROR: ", error)
+    }
+
+    setLoading(false)
   }
   return (
     <form onSubmit={handleSubmit}>
@@ -30,9 +57,11 @@ const SubscribeEmail = () => {
         />
         <button
           type={"submit"}
-          className={"text-[14px] w-fit border-l border-l-white px-4"}
+          className={
+            "text-[14px] flex items-center justify-center w-[140px] border-l border-l-white px-2"
+          }
         >
-          Subscribe
+          {loading ? <LoaderIcon /> : "Subscribe"}
         </button>
       </div>
     </form>

@@ -1,18 +1,19 @@
-import React from "react";
-import CompanyUSPComponent from "@/components/common/company-usps-listing.component";
-import TypeCassetteComponent from "@/components/common/types-cassette.component";
-import MainPageHeroComponent from "@/components/common/main-page-hero.component";
-import { HomeType } from "@/types";
-import client from "@/sanity/client";
-import { homeDataQuery } from "@/sanity/query";
-import HowItWorks from "@/components/how-it-works";
-import FollowAmg from "@/components/follow-amg";
-import FooterComponent from "@/components/common/footer.component";
+import React from "react"
+import CompanyUSPComponent from "@/components/common/company-usps-listing.component"
+import TypeCassetteComponent from "@/components/common/types-cassette.component"
+import MainPageHeroComponent from "@/components/common/main-page-hero.component"
+import { HomeType } from "@/types"
+import client from "@/sanity/client"
+import { homeDataQuery } from "@/sanity/query"
+import HowItWorks from "@/components/how-it-works"
+import FollowAmg from "@/components/follow-amg"
+import FooterComponent from "@/components/common/footer.component"
 
 export const revalidate = 0
 
 export default async function Home() {
-  const homeData: HomeType = await client.fetch(homeDataQuery);
+  const homeData: HomeType = await client.fetch(homeDataQuery)
+
   return (
     <>
       <div className={"flex flex-col items-center justify-center"}>
@@ -57,5 +58,5 @@ export default async function Home() {
       </div>
       <FooterComponent />
     </>
-  );
+  )
 }

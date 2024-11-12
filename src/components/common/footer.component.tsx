@@ -46,19 +46,25 @@ const FooterComponent = async () => {
             <div className={"flex flex-col gap-1 lg:gap-2"}>
               <Link
                 href={"/faq"}
-                className={"text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"}
+                className={
+                  "text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"
+                }
               >
                 Faq
               </Link>
               <Link
                 href={"/returns"}
-                className={"text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"}
+                className={
+                  "text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"
+                }
               >
                 Returns
               </Link>
               <Link
                 href={"/refusals"}
-                className={"text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"}
+                className={
+                  "text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"
+                }
               >
                 Refusals
               </Link>
@@ -138,17 +144,20 @@ const FooterComponent = async () => {
               Legal —
             </p>
             <div className={"flex flex-col gap-1 lg:gap-2"}>
-
               <Link
                 href={"/tos"}
-                className={"text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"}
+                className={
+                  "text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"
+                }
               >
                 ToS
               </Link>
 
               <Link
                 href={"/privacy-policy"}
-                className={"text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"}
+                className={
+                  "text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"
+                }
               >
                 Privacy Policy
               </Link>
