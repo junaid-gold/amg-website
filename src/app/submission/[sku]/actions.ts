@@ -1,5 +1,4 @@
-import { CURRENT_CUSTOMER, GET_PRODUCT } from "@/http/endpoints"
-import getServerAuthSession from "@/lib/auth"
+import { GET_PRODUCT, GET_SUBMISSION_IMAGES } from "@/http/endpoints"
 import axios from "axios"
 import { redirect } from "next/navigation"
 
@@ -26,6 +25,28 @@ export const getMySubmissionDetails = async (sku: string) => {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
 
+                redirect("/sign-out")
+            }
+        }
+    }
+}
+
+
+
+export const getMySubmissionImages = async (sku: string) => {
+    try {
+        const { data } = await axios.get(`${GET_SUBMISSION_IMAGES}?sku=${sku}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAGENTO_ACCESS_TOKEN}`,
+                    "Content-Type": "application/json",
+                }
+            })
+
+        return data
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            if (error?.status === 401) {
                 redirect("/sign-out")
             }
         }

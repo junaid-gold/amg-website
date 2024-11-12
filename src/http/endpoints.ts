@@ -1,5 +1,3 @@
-
-
 const baseUrl = process.env.NEXT_PUBLIC_MAGENTO_API_END_POINT
 
 export const FORGET_PASSWORD = `${baseUrl}/rest/default/V1/customers/password`
@@ -32,3 +30,5 @@ export const CREATE_SUBMISSION = `${baseUrl}/webservices/orders/`
 export const CUSTOMER_PROFILE_ID = `${baseUrl}/webservices/acid/`
 export const CREATE_INSURANCE_AND_SHIPPING = `${baseUrl}/webservices/cart`
 export const CLEAR_DISCOUNTS_FROM_CART = `${baseUrl}/rest/default/V1/carts/mine/coupons`
+export const GET_SUBMISSION_IMAGES = `${baseUrl}/webservices/product/`
+export const CLEAR_CART = `${baseUrl}/webservices/clear/`
