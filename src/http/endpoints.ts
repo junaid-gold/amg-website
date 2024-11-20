@@ -10,6 +10,7 @@ export const CHANGE_USER_PASSWORD = `${baseUrl}/rest/default/V1/customers/me/pas
 export const UPDATE_USER_ADDRESS = `${baseUrl}/rest/default/V1/addresses`
 export const CURRENT_CUSTOMER = `${baseUrl}/rest/default/V1/customers/me`
 export const GET_CUSTOMER_ORDER = `${baseUrl}/rest/V1/orders`
+export const GET_ORDER_DETAILS = `${baseUrl}/webservices/order_details/`
 export const GET_ATTRIBUTE_DETAILS = `${baseUrl}/rest/default/V1/attributeMetadata/customer/attribute`
 export const CUSTOMER_CART = `${baseUrl}/rest/default/V1/carts/mine`
 export const CUSTOMER_CART_ITEMS = `${baseUrl}/rest/default/V1/carts/mine/items`

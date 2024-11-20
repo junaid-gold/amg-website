@@ -3,10 +3,11 @@ import { Item } from "@/types"
 import OrderTableItem from "./order-table-item"
 
 interface OrderItemsTableProps {
-  data: Item[]
+  data: Item[];
+  details: { sku: string, options: [{ label: string, value: string }] }[]
 }
 
-const OrderItemsTable = ({ data }: OrderItemsTableProps) => {
+const OrderItemsTable = ({ data, details }: OrderItemsTableProps) => {
   return (
     <>
       <div className="relative w-full max-w-[90rem] mx-auto">
@@ -43,7 +44,7 @@ const OrderItemsTable = ({ data }: OrderItemsTableProps) => {
 
             {/* Body */}
             {data?.map((value, index) => (
-              <OrderTableItem itemData={value} key={value?.id} />
+              <OrderTableItem details={details?.find((item) => item?.sku === value?.sku)!} itemData={value} key={value?.id} />
             ))}
           </div>
         </div>

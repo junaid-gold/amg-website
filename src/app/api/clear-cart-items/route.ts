@@ -32,7 +32,10 @@ export async function POST(req: NextRequest) {
             },
         });
 
-        await axios.get(`${CLEAR_CART}?id=${cartData?.customer?.id}`)
+        const res = await axios.get(`https://store.audiomediagrading.com/webservices/clear/?id=6468`)
+        // console.log("2", res)
+        // await axios.get(`${CLEAR_CART}?id=${cartData?.id}`)
+        // console.log("3")
 
         await axios.post(`${CREATE_INSURANCE_AND_SHIPPING}/?id=${cartData?.customer?.id}`, {
             headers: {
