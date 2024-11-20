@@ -2,7 +2,7 @@ import { getBillingAddress, getCurrentCustomer, getCustomerAddresses, getCustome
 import { OrderItem, OrdersSearchCriteria } from "@/types";
 import AccountWrapperView from "./component/account-wrapper-view";
 import { getCountries } from "../(auth)/sign-up/actions";
-
+export const maxDuration = 300; // This function can run for a maximum of 5 seconds
 export const revalidate = 0;
 
 const Account = async ({ params, searchParams }: { params: {}, searchParams: { [key: string]: string } }) => {
