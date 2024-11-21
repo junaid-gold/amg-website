@@ -929,6 +929,21 @@ export interface TermsConditionPageType {
   warranty: any
 }
 
+
+export interface GradingScalePageType {
+  amgGradingScale: any,
+  vinyl: any,
+  cassettesCdsAndTracks: any
+}
+
+
+export interface GradingScaleModuleType {
+  overallGrade: string,
+  numericGrade: number,
+  description: any;
+  examples: any
+}
+
 export interface PrivacyPolicyPageType {
   privacyAndMarketingPolicy: any,
   informationWeMayCollect: any,

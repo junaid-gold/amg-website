@@ -1,6 +1,6 @@
 import FooterComponent from "@/components/common/footer.component"
 import client from "@/sanity/client";
-import { aboutDataQuery, tocDataQuery } from "@/sanity/query";
+import { tocDataQuery } from "@/sanity/query";
 import { TermsConditionPageType } from "@/types";
 import { PortableText, PortableTextReactComponents } from "next-sanity";
 import React from "react"
