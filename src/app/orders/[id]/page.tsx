@@ -1,13 +1,13 @@
-import { getCustomerOrderDetails } from './actions'
+import { getCustomerOrderDetails, getOrderDetails } from './actions'
 import { OrderItem } from '@/types'
 import { LeftArrowBlack } from '@/components/icons'
 import Link from 'next/link'
 import moment from 'moment'
 import OrderItemsTable from './_components/order-items-table'
-import Temp from './temp'
 
 const page = async ({ params: { id } }: { params: { id: string } }) => {
   const order: OrderItem = await getCustomerOrderDetails(id)
+  const orderDetails = await getOrderDetails(id)
   return (
     <div className={"flex flex-col items-center gap-6 justify-center w-full"}>
       <div className='bg-[#EBEAE2] w-full'>
@@ -34,7 +34,7 @@ const page = async ({ params: { id } }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
-      <OrderItemsTable data={order?.items} />
+      <OrderItemsTable details={orderDetails as { sku: string, options: [{ label: string, value: string }] }[]} data={order?.items} />
       <div className='max-w-[90rem] p-8 lg:p-12 w-full mx-auto'>
         <div className={"flex flex-col-reverse lg:flex-row items-stretch w-full gap-10"}>
           <div className=' flex-1 w-full bg-[#EBEAE2] space-y-6 rounded-3xl p-6'>

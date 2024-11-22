@@ -8,6 +8,7 @@ import Toast from "@/components/providers/toast"
 import "@/styles/image-container.css"
 import "@/styles/animation.css"
 import "@/styles/globals.css"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,6 +31,19 @@ export default async function RootLayout({
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
+        {/* Google Tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4T5472V5WZ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4T5472V5WZ');
+          `}
+        </Script>
         <title>AMG</title>
       </head>
       <body className={inter.className}>
@@ -39,6 +53,37 @@ export default async function RootLayout({
             <WrapperMain>{children}</WrapperMain>
           </AuthProvider>
         </QueryProvider>
+
+        {/* Facebook Pixel Script */}
+        <Script
+          id="facebook-pixel"
+          strategy="afterInteractive" // Ensures the script loads after the page is interactive
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '577056731340332');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
+        {/* Noscript Fallback */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=577056731340332&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+
       </body>
     </html>
   )

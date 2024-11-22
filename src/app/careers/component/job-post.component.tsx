@@ -43,7 +43,9 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
                 "w-[9em] flex items-center justify-center py-3 text-[12px] bg-[#fff] font-theme-font-roman rounded-xl"
               }
             >
-              <p>{tag?.label}</p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer" href={tag?.label === "On-Site" ? "https://docs.google.com/document/d/16TVqcSYxyjBWaisu8HzepitoQ7d_7y-e/edit" : "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit"}>{tag?.label}</a>
             </div>
           ))}
         </div>

@@ -1,5 +1,3 @@
-
-
 const baseUrl = process.env.NEXT_PUBLIC_MAGENTO_API_END_POINT
 
 export const FORGET_PASSWORD = `${baseUrl}/rest/default/V1/customers/password`
@@ -12,6 +10,7 @@ export const CHANGE_USER_PASSWORD = `${baseUrl}/rest/default/V1/customers/me/pas
 export const UPDATE_USER_ADDRESS = `${baseUrl}/rest/default/V1/addresses`
 export const CURRENT_CUSTOMER = `${baseUrl}/rest/default/V1/customers/me`
 export const GET_CUSTOMER_ORDER = `${baseUrl}/rest/V1/orders`
+export const GET_ORDER_DETAILS = `${baseUrl}/webservices/order_details/`
 export const GET_ATTRIBUTE_DETAILS = `${baseUrl}/rest/default/V1/attributeMetadata/customer/attribute`
 export const CUSTOMER_CART = `${baseUrl}/rest/default/V1/carts/mine`
 export const CUSTOMER_CART_ITEMS = `${baseUrl}/rest/default/V1/carts/mine/items`
@@ -32,3 +31,5 @@ export const CREATE_SUBMISSION = `${baseUrl}/webservices/orders/`
 export const CUSTOMER_PROFILE_ID = `${baseUrl}/webservices/acid/`
 export const CREATE_INSURANCE_AND_SHIPPING = `${baseUrl}/webservices/cart`
 export const CLEAR_DISCOUNTS_FROM_CART = `${baseUrl}/rest/default/V1/carts/mine/coupons`
+export const GET_SUBMISSION_IMAGES = `${baseUrl}/webservices/product/`
+export const CLEAR_CART = `${baseUrl}/webservices/clear/`

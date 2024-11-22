@@ -1,4 +1,4 @@
-import { CREATE_INSURANCE_AND_SHIPPING, CUSTOMER_CART, DELETE_PRODUCT_FROM_CART } from "@/http/endpoints";
+import { CLEAR_CART, CREATE_INSURANCE_AND_SHIPPING, CUSTOMER_CART, DELETE_PRODUCT_FROM_CART } from "@/http/endpoints";
 import getServerAuthSession from "@/lib/auth";
 import { formatAxiosError } from "@/lib/utils";
 import axios from "axios";
@@ -32,7 +32,11 @@ export async function POST(req: NextRequest) {
             },
         });
 
-        // TODO: Removing Await so it can't wait and return the response
+        const res = await axios.get(`https://store.audiomediagrading.com/webservices/clear/?id=6468`)
+        // console.log("2", res)
+        // await axios.get(`${CLEAR_CART}?id=${cartData?.id}`)
+        // console.log("3")
+
         await axios.post(`${CREATE_INSURANCE_AND_SHIPPING}/?id=${cartData?.customer?.id}`, {
             headers: {
                 Authorization: `Bearer ${session?.accessToken}`,

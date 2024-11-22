@@ -8,9 +8,10 @@ import Link from "next/link"
 
 interface SubmissionViewProps {
   productData: ProductItem
+  images: string[]
 }
 
-const SubmissionView = ({ productData }: SubmissionViewProps) => {
+const SubmissionView = ({ images, productData }: SubmissionViewProps) => {
   const [selectedButton, setSelectedButton] = useState<number>(0)
 
   const { custom_attributes } = productData
@@ -80,17 +81,17 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                 custom_attribute?.attribute_code === "thumbnail"
             ) ? (
               <>
-                {productData?.media_gallery_entries?.filter((media) => media?.types?.length)?.map((media) => (
+                {images?.map((media, index) => (
                   <div
-                    key={media?.id}
+                    key={media}
                     style={{ backgroundColor: "white" }}
                     className="min-w-[calc(100vw-80px)] max-w-[calc(100vw-80px)] sm:min-w-[calc(100vw-160px)] sm:max-w-[calc(100vw-160px)] md:max-w-none md:min-w-0 p-8 sm:p-16 rounded-3xl"
                   >
                     <div className="w-full h-72  sm:h-96 md:h-96 lg:h-[560px] relative">
-                      <a className="w-full h-full" href={`${process.env.NEXT_PUBLIC_MAGENTO_API_END_POINT}/pub/media/catalog/product${media?.file}`} target="_blank" rel="noopener noreferrer">
+                      <a className="w-full h-full" href={`${media}`} target="_blank" rel="noopener noreferrer">
                         <Image
-                          src={`${process.env.NEXT_PUBLIC_MAGENTO_API_END_POINT}/pub/media/catalog/product${media?.file}`}
-                          alt={media?.id?.toString()}
+                          src={`${media}`}
+                          alt={`${index}`}
                           fill
                           className={"!w-full h-full object-contain"}
                         />

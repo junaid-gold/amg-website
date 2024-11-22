@@ -191,6 +191,16 @@ export const aboutHighlightsDataQuery = groq`
 }
 `;
 
+
+export const gradingScaleModuleDataQuery = groq`
+*[_type == "gradingScaleModule"]{
+    overallGrade,
+    numericGrade,
+    description,
+    examples
+}
+`;
+
 export const whyUseAmgDataQuery = groq`
   *[_type == "whyUseAmg"]{
       heading,
@@ -310,6 +320,16 @@ export const tocDataQuery = groq`
         warranty
     }
   `;
+
+
+export const gradingScaleDataQuery = groq`
+*[_type == "gradingScalePage"][0]{
+    amgGradingScale,
+    vinyl,
+    cassettesCdsAndTracks
+}
+`;
+
 
 export const privacyDataQuery = groq`
   *[_type == "privacyPolicyPage"][0]{

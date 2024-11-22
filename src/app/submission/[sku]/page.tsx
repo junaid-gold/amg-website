@@ -1,6 +1,6 @@
 import FooterComponent from "@/components/common/footer.component";
 import SubmissionView from "./_components/submission-view";
-import { getMySubmissionDetails } from "./actions";
+import { getMySubmissionDetails, getMySubmissionImages } from "./actions";
 import { ProductItem } from "@/types";
 import { redirect } from "next/navigation";
 
@@ -12,6 +12,7 @@ const ProductDetails = async ({ params }: { params: { sku: string } }) => {
     redirect("/");
   }
   const details: ProductItem = await getMySubmissionDetails(sku);
+  const images = await getMySubmissionImages(sku)
   if (!details) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center overflow-hidden">
@@ -63,7 +64,7 @@ const ProductDetails = async ({ params }: { params: { sku: string } }) => {
   }
   return (
     <>
-      <SubmissionView productData={details} />
+      <SubmissionView images={[images?.IMAGE]} productData={details} />
       <FooterComponent />
     </>
   );
