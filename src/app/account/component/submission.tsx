@@ -95,33 +95,34 @@ const Submission = ({ products }: SubmissionProps) => {
                 </div> */}
                   <div className="w-full p-6 border-r border-r-[#F2F1F1] lg:border-r-theme-gray min-w-[150px] justify-start items-center gap-2 flex">
                     <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-light leading-[21px]">
-                      {value?.custom_attributes?.find(
-                        (custom_attribute) =>
-                          custom_attribute?.attribute_code ===
-                          "c2c_received_date"
-                      ) ? (
-                        <>
-                          <div className="mb-2">
-                            Received on: <br />
-                            {moment(
-                              value?.custom_attributes?.find(
-                                (custom_attribute) =>
-                                  custom_attribute?.attribute_code ===
-                                  "c2c_received_date"
-                              )?.value
-                            )?.format("L")}
-                          </div>
-                          <Link className="text-base w-fit  rounded-full border border-theme-black text-white bg-black flex items-center justify-center px-5 py-1" href={`/submission/${value?.sku}`}>View</Link>
+                      {
+                        value?.custom_attributes?.find(
+                          (custom_attribute) =>
+                            custom_attribute?.attribute_code === "c2c_graded_date"
+                        )
+                          ? (
+                            <>
+                              <div className="mb-2">
+                                Received on: <br />
+                                {moment(
+                                  value?.custom_attributes?.find(
+                                    (custom_attribute) =>
+                                      custom_attribute?.attribute_code ===
+                                      "c2c_received_date"
+                                  )?.value
+                                )?.format("L")}
+                              </div>
+                              <Link className="text-base w-fit  rounded-full border border-theme-black text-white bg-black flex items-center justify-center px-5 py-1" href={`/submission/${value?.sku}`}>View</Link>
 
-                        </>
-                      ) : (
-                        <>
-                          {"Item Not Received by AMG Yet."
-                          }
-                          <br />
+                            </>
+                          ) : (
+                            <>
+                              {"Item Not Received by AMG Yet."
+                              }
+                              <br />
 
-                        </>
-                      )}
+                            </>
+                          )}
                     </div>
                   </div>
                   <div className="w-full border-r border-r-[#F2F1F1] lg:border-r-theme-gray min-w-[250px] p-6 justify-start items-center gap-2 flex">
