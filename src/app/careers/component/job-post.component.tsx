@@ -1,19 +1,39 @@
 "use client"
 import { JobType } from "@/types";
+import { useRef } from "react";
 
 const JobPostComponent = ({ data }: { data: JobType }) => {
-  const handleOpenEmail = () => {
+  const handleOpenEmail = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     window.location.href = 'mailto:jobs@audiomediagrading.com';
   };
+
+  const buttonRef = useRef(null)
+
+  const handleBoxClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as Node; // Explicitly cast event.target to Node
+    // @ts-ignore
+    if (buttonRef.current && buttonRef.current?.contains(target)) {
+      // The button was clicked, so ignore the box click behavior
+      return;
+    }
+    const url =
+      data?.heading === "Lead Researcher"
+        ? "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit"
+        : "https://docs.google.com/document/d/16TVqcSYxyjBWaisu8HzepitoQ7d_7y-e/edit";
+
+
+    // I want to check is the buttonRef is clicked or not
+    // Open URL in a new tab
+    window.open(url, "_blank");
+  }
+
   return (
-    <a target="_blank"
-      rel="noopener noreferrer"
-      href={data?.heading === "Lead Researcher" ? "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit" : "https://docs.google.com/document/d/16TVqcSYxyjBWaisu8HzepitoQ7d_7y-e/edit"}
-      className="w-full sm:w-[48%] lg:w-full block"
+    <div
+      onClick={handleBoxClick}
+      className="w-full cursor-pointer sm:w-[48%] lg:w-full block"
     >
-
       <div
-
         className={
           "py-12 flex items-center justify-between flex-col min-h-[280px] lg:flex-row w-full lg:px-16 rounded-2xl relative overflow-hidden"
         }
@@ -55,7 +75,9 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
             ))}
           </div>
         </div>
+        {/* Dont open the a href link on this button click instead open the mail box */}
         <button
+          ref={buttonRef}
           onClick={handleOpenEmail}
           className={
             "w-[85%] md:w-[80%] lg:w-[20%] h-fit rounded-full border border-theme-black text-theme-black bg-transparent flex items-center justify-center px-2 py-3"
@@ -70,7 +92,7 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
           className={` h-[12px] w-full absolute bottom-0 left-0`}
         />
       </div>
-    </a>
+    </div>
   );
 };
 
