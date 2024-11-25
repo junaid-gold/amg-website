@@ -59,6 +59,10 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
     (custom_attribute) => custom_attribute?.attribute_code === "amg_sub_package"
   )
 
+  const handleContextMenu = (event: React.MouseEvent) => {
+    event.preventDefault(); // Prevent the context menu from opening
+  };
+
   return (
     <div className={"flex flex-col items-center justify-center w-full"}>
       <div className={"max-w-[90rem] p-8 lg:p-12 w-full"}>
@@ -98,6 +102,9 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                           src={`${process.env.NEXT_PUBLIC_MAGENTO_API_END_POINT}/pub/media/catalog/product${media?.file}`}
                           alt={media?.id?.toString()}
                           fill
+                          onContextMenu={handleContextMenu} // Attach the event handler
+                          style={{ cursor: 'not-allowed' }} // Optional: Change cursor style
+
                           className={"!w-full h-full object-contain"}
                         />
                       </a>
@@ -115,41 +122,13 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                     src={`https://staging.audiomediagrading.com/pub/media/catalog/product/placeholder/default/amgcomingsoon_2.jpg`}
                     alt={"product"}
                     fill
+                    onContextMenu={handleContextMenu} // Attach the event handler
+                    style={{ cursor: 'not-allowed' }} // Optional: Change cursor style
                     className={"!w-full h-full object-contain"}
                   />
                 </div>
               </div>
             )}
-            {/* <div style={{ backgroundColor: "white" }} className="min-w-[calc(100vw-80px)] max-w-[calc(100vw-80px)] sm:min-w-[calc(100vw-160px)] sm:max-w-[calc(100vw-160px)] md:max-w-none md:min-w-0 p-8 sm:p-16 rounded-3xl">
-              <div className="w-full h-72 sm:h-96 md:h-[560px] relative">
-                <Image
-                  src={`https://staging.audiomediagrading.com/pub/media/catalog/product/placeholder/default/amgcomingsoon_2.jpg`}
-                  alt={"product"}
-                  fill
-                  className={"!w-full h-full"}
-                />
-              </div>
-            </div>
-            <div style={{ backgroundColor: "white" }} className="min-w-[calc(100vw-80px)] max-w-[calc(100vw-80px)] sm:min-w-[calc(100vw-160px)] sm:max-w-[calc(100vw-160px)] md:max-w-none md:min-w-0 p-8 sm:p-16 rounded-3xl">
-              <div className="w-full h-72 sm:h-96 md:h-[560px] bg-white relative">
-                <Image
-                  src={`https://staging.audiomediagrading.com/pub/media/catalog/product/placeholder/default/amgcomingsoon_2.jpg`}
-                  alt={"product"}
-                  fill
-                  className={"!w-full h-full"}
-                />
-              </div>
-            </div>
-            <div style={{ backgroundColor: "white" }} className="min-w-[calc(100vw-80px)] max-w-[calc(100vw-80px)] sm:min-w-[calc(100vw-160px)] sm:max-w-[calc(100vw-160px)] md:max-w-none md:min-w-0 p-8 sm:p-16 rounded-3xl">
-              <div className="w-full h-72 sm:h-96 md:h-[560px]  relative">
-                <Image
-                  src={`https://staging.audiomediagrading.com/pub/media/catalog/product/placeholder/default/amgcomingsoon_2.jpg`}
-                  alt={"product"}
-                  fill
-                  className={"!w-full h-full"}
-                />
-              </div>
-            </div> */}
           </div>
           <div
             className={
