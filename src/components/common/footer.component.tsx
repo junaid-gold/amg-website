@@ -68,6 +68,12 @@ const FooterComponent = async () => {
               >
                 Refusals
               </Link>
+              <Link
+                href={"/grading-scale"}
+                className={"text-[16px] lg:text-[24px] !font-theme-font-light  hover:underline"}
+              >
+                Grading Scale
+              </Link>
             </div>
           </div>
           <div
