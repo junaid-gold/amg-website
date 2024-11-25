@@ -64,7 +64,7 @@ const ProductDetails = async ({ params }: { params: { sku: string } }) => {
   }
   return (
     <>
-      <SubmissionView images={[images?.IMAGE]} productData={details} />
+      <SubmissionView images={images} productData={details} />
       <FooterComponent />
     </>
   );

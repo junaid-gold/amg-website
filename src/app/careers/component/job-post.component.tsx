@@ -9,13 +9,13 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
     <a target="_blank"
       rel="noopener noreferrer"
       href={data?.heading === "Lead Researcher" ? "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit" : "https://docs.google.com/document/d/16TVqcSYxyjBWaisu8HzepitoQ7d_7y-e/edit"}
-      className="w-full block"
+      className="w-full sm:w-[48%] lg:w-full block"
     >
 
       <div
 
         className={
-          "py-12 flex items-center justify-between flex-col min-h-[280px] lg:flex-row w-full sm:w-[48%] lg:w-full lg:px-16 rounded-2xl relative overflow-hidden"
+          "py-12 flex items-center justify-between flex-col min-h-[280px] lg:flex-row w-full lg:px-16 rounded-2xl relative overflow-hidden"
         }
         style={{ boxShadow: "0px 0px 19.2px 0px #00000040" }}
       >

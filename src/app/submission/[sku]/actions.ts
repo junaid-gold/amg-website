@@ -42,8 +42,10 @@ export const getMySubmissionImages = async (sku: string) => {
                     "Content-Type": "application/json",
                 }
             })
-
-        return data
+        const transformedArray = data.IMAGES.map((imageObj: { [s: string]: unknown } | ArrayLike<unknown>) =>
+            Object.values(imageObj)[0]
+        );
+        return transformedArray
     } catch (error) {
         if (axios.isAxiosError(error)) {
             if (error?.status === 401) {
@@ -52,3 +54,4 @@ export const getMySubmissionImages = async (sku: string) => {
         }
     }
 }
+
