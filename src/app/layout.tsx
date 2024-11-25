@@ -44,6 +44,20 @@ export default async function RootLayout({
             gtag('config', 'G-4T5472V5WZ');
           `}
         </Script>
+
+        {/* Google Tag Manager Script */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11476083695"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-11476083695');
+          `}
+        </Script>
         <title>AMG</title>
       </head>
       <body className={inter.className}>
