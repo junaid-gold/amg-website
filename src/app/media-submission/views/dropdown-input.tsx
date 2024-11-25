@@ -34,7 +34,7 @@ const DropdownInput = ({ value, title, customLayoutOptionId }: DropdownInputProp
         if (isSelected) {
           removeCustomOption(value?.option_id)
         } else {
-          updateCustomOption(value.option_id, value?.option_type_id, value?.price)
+          updateCustomOption(value.option_id, value?.option_type_id!, value?.price)
         }
         if (title === "Type" || title === "How do you want your record displayed?") {
           if (value?.title !== "Custom Layout" && value?.title !== "") {

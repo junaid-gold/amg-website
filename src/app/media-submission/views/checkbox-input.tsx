@@ -30,7 +30,7 @@ const CheckboxInput = ({ value }: CheckboxInputProps) => {
                         if (e?.target?.checked) {
                             updateCustomOption(
                                 value?.option_id,
-                                value?.option_type_id,
+                                value?.option_type_id!,
                                 value?.price
                             );
                         } else {
