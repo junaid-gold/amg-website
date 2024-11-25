@@ -171,6 +171,10 @@ const Step = ({ isLast, option, accordion, setAccordion, customOptions }: StepPr
                                 option?.title !==
                                 "What is the estimated value of your record?" && (
                                     <>
+                                        {
+                                            !option?.is_require &&
+                                            <RadioInput value={{ option_id: option?.option_id, title: "None" }} />
+                                        }
                                         {option?.values?.map((value) => (
                                             <RadioInput
                                                 key={value?.option_type_id}

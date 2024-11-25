@@ -36,20 +36,25 @@ const RadioInput = ({ value }: RadioStepProps) => {
                     // }}
                     onChange={(e) => {
                         if (!isSelected) {
-                            updateCustomOption(
-                                value?.option_id,
-                                value?.option_type_id,
-                                value?.price
-                            );
+                            if (
+                                value?.option_type_id) {
+                                updateCustomOption(
+                                    value?.option_id,
+                                    value?.option_type_id,
+                                    value?.price
+                                );
+                            } else {
+                                removeCustomOption(value?.option_id)
+                            }
                         }
                     }}
                     checked={isSelected}
                     className={"w-5 h-5 "}
                     type="radio"
-                    id={value?.option_type_id?.toString()}
+                    id={value?.option_type_id?.toString() || value?.option_id?.toString()}
                     name={`${value?.option_id?.toString()}`}
                 />
-                <label htmlFor={value?.option_type_id?.toString()} className=" text-[18px] font-theme-font-light"  >
+                <label htmlFor={value?.option_type_id?.toString() || value?.option_id?.toString()} className=" text-[18px] font-theme-font-light"  >
                     {value?.title}
                 </label>
             </div>
@@ -58,7 +63,6 @@ const RadioInput = ({ value }: RadioStepProps) => {
                     ${value?.price}
                 </div>
             ) : null}
-
         </div>
 
     )

@@ -834,10 +834,10 @@ export interface Option {
 
 export interface Value {
   title: string
-  sort_order: number
-  price: number
-  price_type: string
-  option_type_id: number
+  sort_order?: number
+  price?: number
+  price_type?: string
+  option_type_id?: number
 }
 
 export interface MediaGalleryEntry {
