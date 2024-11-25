@@ -1,12 +1,10 @@
 import Image from "next/image"
-import { contactDetails } from "@/data/contact-us.data"
-import { SearchIcon } from "@/components/icons"
-import InputComponent from "@/components/common/input.component"
 import FooterComponent from "@/components/common/footer.component"
 import { ContactType } from "@/types"
 import client from "@/sanity/client"
 import { contactDataQuery } from "@/sanity/query"
 import { PortableTextReactComponents, PortableText } from "next-sanity"
+import Form from "./_components/form"
 
 const components: Partial<PortableTextReactComponents> = {
   block: {
@@ -64,75 +62,7 @@ const ContactUs = async () => {
                   value={contactData?.text}
                   components={components}
                 />
-                {/* <p className={"font-theme-font-light text-base"}>
-                  The AMG customer service team is available{" "}
-                  <span className={"font-theme-font-medium"}>
-                    Monday through Friday from 9 a.m. - 5 p.m. EST.
-                  </span>
-                </p>
-                <p className={"font-theme-font-light text-base"}>
-                  You can reach us at (866) 264-0001 or feel free to complete
-                  the form below.{" "}
-                </p>
-                <p className={"font-theme-font-light text-base"}>
-                  We take great pride in responding to emails and phone calls as
-                  soon as possible. Thank you and we look forward to connecting
-                  with you soon!
-                </p> */}
-                <form className={"mt-6 flex flex-col gap-5"}>
-                  <InputComponent
-                    placeholder={contactData?.inputPlaceHolderOne}
-                  />
-                  <InputComponent
-                    placeholder={contactData?.inputPlaceHolderTwo}
-                  />
-                  <InputComponent
-                    placeholder={contactData?.inputPlaceHolderThree}
-                  />
-                  <button
-                    type={"submit"}
-                    className={
-                      "w-full lg:w-1/2 rounded-full border border-theme-black text-theme-black bg-transparent px-6 py-3"
-                    }
-                  >
-                    <p className={"font-theme-font-roman"}>Send a Message</p>
-                  </button>
-                  <div
-                    className={"flex mt-6 flex-col md:flex-row gap-4 w-full"}
-                  >
-                    {contactDetails.map((details, key) => (
-                      <div
-                        key={details.heading}
-                        className={`flex gap-4 ${
-                          key === 0 ? "w-[65%]" : "w-full"
-                        }`}
-                      >
-                        <div className={"w-[28px] h-[28px]"}>
-                          {details.icon()}
-                        </div>
-                        <div>
-                          <p
-                            className={
-                              "uppercase font-theme-font-medium text-sm"
-                            }
-                          >
-                            {details.heading}
-                          </p>
-                          <p
-                            className={
-                              "font-theme-font-light text-sm break-all"
-                            }
-                          >
-                            {details?.heading === "Phone" && contactData?.phone}
-                            {details?.heading === "Email" && contactData?.email}
-                            {details?.heading === "Address" &&
-                              contactData?.address}
-                          </p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </form>
+                <Form contactData={contactData} />
               </div>
               <div
                 className={
