@@ -410,38 +410,6 @@ const SubmissionView = ({ productData }: SubmissionViewProps) => {
                 </>
               )}
             </div>
-            <button
-              onClick={() => {
-                if (productData?.media_gallery_entries?.length) {
-                  productData?.media_gallery_entries?.forEach((media) => {
-                    const element = document.createElement("a");
-                    const file = new Blob(
-                      [`${process.env.NEXT_PUBLIC_MAGENTO_API_END_POINT}/pub/media/catalog/product${media?.file}`],
-                      { type: "image/*" }
-                    );
-                    element.href = URL.createObjectURL(file);
-                    element.download = "image.jpg";
-                    element.click();
-                  })
-                } else {
-                  const element = document.createElement("a");
-                  const file = new Blob(
-                    [
-                      "https://staging.audiomediagrading.com/pub/media/catalog/product/placeholder/default/amgcomingsoon_2.jpg"
-                    ],
-                    { type: "image/*" }
-                  );
-                  element.href = URL.createObjectURL(file);
-                  element.download = "image.jpg";
-                  element.click();
-                }
-              }}
-              className={
-                "w-full lg:w-[40%] rounded-full border border-theme-black text-white bg-black flex items-center justify-center px-2 py-3"
-              }
-            >
-              <p className={"font-theme-font-roman"}>Download media</p>
-            </button>
           </div>
         </div>
       </div>
