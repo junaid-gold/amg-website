@@ -563,45 +563,6 @@ const PaymentMethods = ({
                                 />
 
                               </div>
-                              {/* <div className={`border w-full gap-1 flex-1 py-3 px-2.5 flex items-center  border-[#DEDEDE] rounded-md relative
-                            ${errors?.expiryMonth?.length && "border-red-500"}
-                            ${errors?.expiryYear?.length && "border-red-500"}
-                            `}>
-                              <p className={`absolute top-[11px] left-2.5 text-gray-400 z-0 ${creditCardExpiryMonth?.length === 0 && creditCardExpiryYear?.length === 0 ? "opacity-100" : "opacity-0"}`}>Expiration date (MM/YYYY)</p>
-                              <input
-                                type="text"
-                                // placeholder="Expiration date DD"
-                                className="bg-transparent relative z-10 w-5 rounded"
-                                id="creditCardExpiry"
-                                value={`${creditCardExpiryMonth}`} // Update to reflect the day
-                                onChange={(e) => {
-                                  handleCreditCardInputChange(
-                                    e.target.value,
-                                    setCreditCardExpiryMonth,
-                                    validateExpiryMonth,
-                                    "expiryMonth"
-                                  )
-                                }}
-                                maxLength={2}
-                              />
-                              <div className={`${creditCardExpiryMonth?.length === 0 && creditCardExpiryYear?.length === 0 ? "opacity-0" : "opacity-100"} relative z-0`}>/</div>
-                              <input
-                                type="text"
-                                // placeholder="YYYY"
-                                className="flex-1 bg-transparent relative z-10 rounded"
-                                id="creditCardExpiryYear"
-                                value={creditCardExpiryYear}
-                                onChange={(e) =>
-                                  handleCreditCardInputChange(
-                                    e.target.value,
-                                    setCreditCardExpiryYear,
-                                    validateExpiryYear,
-                                    "expiryYear"
-                                  )
-                                }
-                                maxLength={4}
-                              />
-                            </div> */}
                               <div className={`border w-full flex-1 py-3 px-2.5 flex items-center  border-[#DEDEDE] rounded-md relative
                             ${errors?.cvc?.length && "border-red-500"}
                             `}>
