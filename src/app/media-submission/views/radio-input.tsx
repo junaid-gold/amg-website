@@ -17,7 +17,9 @@ const RadioInput = ({ value }: RadioStepProps) => {
             (custom_option) => custom_option?.option_id === value?.option_id
         )
 
-    const isSelected = selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
+
+    const isSelected = value?.title === "None" ? selectedOne?.option_id?.toString() ? false : true : selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
+
     return (
         <div
             className={
@@ -30,14 +32,13 @@ const RadioInput = ({ value }: RadioStepProps) => {
                 <input
                     onChange={(e) => {
                         if (!isSelected) {
-                            if (value?.option_type_id) {
+                            if (value?.title !== "None") {
                                 updateCustomOption(
                                     value?.option_id,
                                     value?.option_type_id,
                                     value?.price
                                 );
                             } else {
-                                console.log("ELSE")
                                 removeCustomOption(value?.option_id)
                             }
                         }
