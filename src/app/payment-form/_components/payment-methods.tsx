@@ -8,7 +8,7 @@ import { errorHandler } from "@/lib/utils";
 import toast from "react-hot-toast";
 import axios from "axios";
 import WhiteAnimation from "@/components/white-animation";
-import { getStoredPaymentMethods } from "@/app/account/actions";
+import { getStoredPaymentMethods, storePaymentMethod } from "@/app/account/actions";
 
 export const formatCreditCardNumber = (value: string) => {
   // Remove any non-numeric characters and spaces
@@ -89,6 +89,7 @@ const PaymentMethods = ({
 
   const [selectedCard, setSelectedCard] = useState("New Card")
 
+  const [saveCreditCard, setSaveCreditCard] = useState(false)
   const handleCreditCardInputChange = (
     value: string,
     setter: React.Dispatch<React.SetStateAction<string>>,
@@ -287,6 +288,22 @@ const PaymentMethods = ({
   });
 
 
+  const addAddressMutation = useMutation({
+    mutationFn: storePaymentMethod,
+    onSuccess: (data) => {
+      if (data?.status === 200) {
+        queryClient.invalidateQueries({
+          queryKey: ["customerStoredPaymentMethods"],
+          refetchType: "all",
+        })
+
+      }
+    },
+    onError: (error) => {
+      errorHandler(error)
+    },
+  })
+
   const handlePlaceOrder = () => {
     const selectedShipAddress = addresses?.find(
       (address) => address?.id === selectedShippingAddress
@@ -394,6 +411,16 @@ const PaymentMethods = ({
       },
     };
     setLoading(true);
+    if (saveCreditCard) {
+      const { addressInformation: { billing_address, shipping_address } } = addressObj;
+      const { firstname, lastname, street, country_id, telephone, postcode, city, region } = billing_address || shipping_address;
+
+      const regionToPass = { region_id: selectedBillAddress?.region?.region_id?.toString(), region: selectedBillAddress?.region?.region }
+      const objectToPass = { creditCardNumber, creditCardCvc: creditCardCVC, creditCardExpiryMonth, creditCardExpiryYear, firstname, lastname, street: [street?.[0], street?.[1]] as [string, string | undefined], country_id, telephone, postcode, city, region: regionToPass }
+
+
+      addAddressMutation?.mutate(objectToPass)
+    }
     setShippingAddressMutation.mutate(addressObj);
   };
 
@@ -463,7 +490,8 @@ const PaymentMethods = ({
                             My billing and shipping address are the same
                           </label>
                         </div>
-                      </li>                   </ul>
+                      </li>
+                    </ul>
                   </div>
                 )}
                 {paymentMethod?.code === "authnetcim" && (
@@ -611,6 +639,29 @@ const PaymentMethods = ({
                                 </svg>
                               </div>
                             </div>
+                          </div>
+                        </li>
+                      }
+
+                      {
+                        selectedCard === "New Card" &&
+                        <li>
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              className="w-[18px] rounded-lg h-[18px] accent-[#9747FF]"
+                              id="saveCreditCard"
+                              checked={saveCreditCard}
+                              onChange={(e) => {
+                                setSaveCreditCard(e?.target?.checked)
+                              }}
+                            />
+                            <label
+                              htmlFor="saveCreditCard"
+                              className="text-sm font-normal"
+                            >
+                              Save Credit Card
+                            </label>
                           </div>
                         </li>
                       }
