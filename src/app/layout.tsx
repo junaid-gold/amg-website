@@ -9,6 +9,7 @@ import "@/styles/image-container.css"
 import "@/styles/animation.css"
 import "@/styles/globals.css"
 import Script from "next/script"
+import PaypalProvider from "@/components/providers/paypal-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -64,7 +65,9 @@ export default async function RootLayout({
         <QueryProvider>
           <Toast />
           <AuthProvider session={session}>
-            <WrapperMain>{children}</WrapperMain>
+            <PaypalProvider>
+              <WrapperMain>{children}</WrapperMain>
+            </PaypalProvider>
           </AuthProvider>
         </QueryProvider>
 
@@ -99,6 +102,6 @@ export default async function RootLayout({
         </noscript>
 
       </body>
-    </html>
+    </html >
   )
 }

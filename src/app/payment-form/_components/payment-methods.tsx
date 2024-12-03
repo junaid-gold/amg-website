@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import WhiteAnimation from "@/components/white-animation";
 import { getStoredPaymentMethods, storePaymentMethod } from "@/app/account/actions";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 export const formatCreditCardNumber = (value: string) => {
   // Remove any non-numeric characters and spaces
@@ -431,7 +432,7 @@ const PaymentMethods = ({
         <p className="text-[#707070] text-sm">All transactions are secure and encrypted</p>
       </div>
       <ul>
-        {paymentMethods?.filter((paymentMethod) => paymentMethod?.code !== "paypal_express_bml" && paymentMethod?.code !== "paypal_express")?.map((paymentMethod) => (
+        {paymentMethods?.filter((paymentMethod) => paymentMethod?.code !== "paypal_express_bml")?.map((paymentMethod) => (
           <li
             key={paymentMethod?.code}
             className={`flex flex-col gap-4`}
@@ -691,7 +692,27 @@ const PaymentMethods = ({
                   <div className="border-b w-full border-[#DEDEDE] py-2 md:py-3 ">
                     <ul className="space-y-4">
                       <li>
-                        <h1> {paymentMethod?.code}</h1>
+                        <PayPalButtons
+                          style={{ layout: "vertical" }}
+                          createOrder={(data, actions) => {
+                            return actions.order.create({
+                              purchase_units: [
+                                {
+                                  amount: {
+                                    currency_code: "USD",
+                                    value: "10.00", // Payment amount
+                                  },
+                                },
+                              ],
+                              intent: "CAPTURE"
+                            });
+                          }}
+                          onApprove={(data, actions) => {
+                            return actions.order!.capture().then((details) => {
+                              alert(`Transaction completed by `);
+                            });
+                          }}
+                        />
                       </li>
                       <li>
                         <div className="flex items-center gap-2">
