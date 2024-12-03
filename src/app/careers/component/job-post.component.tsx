@@ -1,5 +1,6 @@
 "use client"
 import { JobType } from "@/types";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 const JobPostComponent = ({ data }: { data: JobType }) => {
@@ -10,6 +11,7 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
 
   const buttonRef = useRef(null)
 
+  const router = useRouter()
   const handleBoxClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as Node; // Explicitly cast event.target to Node
     // @ts-ignore
@@ -17,15 +19,14 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
       // The button was clicked, so ignore the box click behavior
       return;
     }
-    const url =
-      data?.heading === "Lead Researcher"
-        ? "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit"
-        : "https://docs.google.com/document/d/16TVqcSYxyjBWaisu8HzepitoQ7d_7y-e/edit";
+    data?.heading === "Lead Researcher"
+      ? "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit"
+      : router.push("/amg-grader");
 
 
     // I want to check is the buttonRef is clicked or not
     // Open URL in a new tab
-    window.open(url, "_blank");
+    // window.open(url, "_blank");
   }
 
   return (

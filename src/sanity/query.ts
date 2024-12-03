@@ -331,6 +331,16 @@ export const gradingScaleDataQuery = groq`
 `;
 
 
+export const amgGraderDataQuery = groq`
+*[_type == "amgGraderPage"][0]{
+    aboutTheCompany,
+    aboutTheRole,
+    responsibilities,
+    whoYouAre
+}
+`;
+
+
 export const privacyDataQuery = groq`
   *[_type == "privacyPolicyPage"][0]{
       privacyAndMarketingPolicy,
