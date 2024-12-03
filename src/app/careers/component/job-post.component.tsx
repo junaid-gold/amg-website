@@ -20,13 +20,9 @@ const JobPostComponent = ({ data }: { data: JobType }) => {
       return;
     }
     data?.heading === "Lead Researcher"
-      ? "https://docs.google.com/document/d/1ISZsdUL3J_3oa9VedS6X1JD4LVR8hmCV/edit"
+      ? router.push("/lead-researcher")
       : router.push("/amg-grader");
 
-
-    // I want to check is the buttonRef is clicked or not
-    // Open URL in a new tab
-    // window.open(url, "_blank");
   }
 
   return (

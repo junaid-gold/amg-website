@@ -944,6 +944,14 @@ export interface AmgGraderPageType {
   whoYouAre: any
 }
 
+
+export interface LeadResearchPageType {
+  aboutTheCompany: any,
+  aboutTheRole: any,
+  responsibilities: any,
+  whoYouAre: any
+}
+
 export interface GradingScaleModuleType {
   overallGrade: string,
   numericGrade: number,

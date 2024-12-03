@@ -1,7 +1,7 @@
 import FooterComponent from '@/components/common/footer.component';
 import client from '@/sanity/client';
-import { amgGraderDataQuery } from '@/sanity/query';
-import { AmgGraderPageType } from '@/types';
+import { leadResearchDataQuery } from '@/sanity/query';
+import { LeadResearchPageType } from '@/types';
 import { PortableText, PortableTextReactComponents } from 'next-sanity';
 import React from 'react'
 
@@ -40,9 +40,7 @@ const components: Partial<PortableTextReactComponents> = {
             >
                 {children}
             </a>),
-
     },
-
     list: {
         bullet: ({ children }) => (
             <ul className="list-disc ml-6">{children}</ul> // Apply disc style with left margin
@@ -62,7 +60,7 @@ const components: Partial<PortableTextReactComponents> = {
 };
 
 const Page = async () => {
-    const amgGraderData: AmgGraderPageType = await client.fetch(amgGraderDataQuery);
+    const leadResearchData: LeadResearchPageType = await client.fetch(leadResearchDataQuery);
     return (
         <>
             <div
@@ -72,7 +70,7 @@ const Page = async () => {
             >
                 <div className="px-[26px] md:px-0 flex flex-col w-full">
                     <div className="text-[34px] md:text-[54px] xl:text-[64px] text-[#030303] leading-[110%] md:leading-[120%] tracking-[0.68px] md:tracking-[-1.08px] xl:tracking-[-1.28px] py-[24px] md:py-[32px] xl:py-[104px] px-[26px] bg-[#EBEAE2] flex items-center justify-center font-theme-font-medium">
-                        AMG Grader
+                        Lead Researcher
                     </div>
                 </div>
 
@@ -81,28 +79,28 @@ const Page = async () => {
                     <div className="text-[18px] leading-[147%] tracking-[0.18px]">
                         <div className="font-theme-font-bold">About The Company:</div>
                         <div className="font-theme-font-light">
-                            <PortableText components={components} value={amgGraderData?.aboutTheCompany} />
+                            <PortableText components={components} value={leadResearchData?.aboutTheCompany} />
                         </div>
                     </div>
                     {/* Section */}
                     <div className="text-[18px] leading-[147%] tracking-[0.18px]">
                         <div className="font-theme-font-bold">About The Role:</div>
                         <div className="font-theme-font-light">
-                            <PortableText components={components} value={amgGraderData?.aboutTheRole} />
+                            <PortableText components={components} value={leadResearchData?.aboutTheRole} />
                         </div>
                     </div>
                     {/* Section */}
                     <div className="text-[18px] leading-[147%] tracking-[0.18px]">
                         <div className="font-theme-font-bold">Responsibilities:</div>
                         <div className="font-theme-font-light">
-                            <PortableText components={components} value={amgGraderData?.responsibilities} />
+                            <PortableText components={components} value={leadResearchData?.responsibilities} />
                         </div>
                     </div>
                     {/* Section */}
                     <div className="text-[18px] leading-[147%] tracking-[0.18px]">
                         <div className="font-theme-font-bold">Who You Are:</div>
                         <div className="font-theme-font-light">
-                            <PortableText components={components} value={amgGraderData?.whoYouAre} />
+                            <PortableText components={components} value={leadResearchData?.whoYouAre} />
                         </div>
                     </div>
                 </div>

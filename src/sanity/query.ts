@@ -330,7 +330,6 @@ export const gradingScaleDataQuery = groq`
 }
 `;
 
-
 export const amgGraderDataQuery = groq`
 *[_type == "amgGraderPage"][0]{
     aboutTheCompany,
@@ -340,6 +339,24 @@ export const amgGraderDataQuery = groq`
 }
 `;
 
+
+export const DataQuery = groq`
+*[_type == "amgGraderPage"][0]{
+    aboutTheCompany,
+    aboutTheRole,
+    responsibilities,
+    whoYouAre
+}
+`;
+
+export const leadResearchDataQuery = groq`
+*[_type == "leadResearchPage"][0]{
+    aboutTheCompany,
+    aboutTheRole,
+    responsibilities,
+    whoYouAre
+}
+`;
 
 export const privacyDataQuery = groq`
   *[_type == "privacyPolicyPage"][0]{
