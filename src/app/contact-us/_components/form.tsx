@@ -2,6 +2,11 @@
 import React, { useState } from 'react'
 import { ContactType } from '@/types'
 import { contactDetails } from "@/data/contact-us.data"
+import { useMutation } from '@tanstack/react-query'
+import { contactUs } from '../actions'
+import { errorHandler } from '@/lib/utils'
+import toast from 'react-hot-toast'
+import BlackAnimation from '@/components/black-animation'
 
 interface FormProps {
     contactData: ContactType
@@ -15,6 +20,24 @@ const Form = ({ contactData }: FormProps) => {
         message: ""
     })
 
+    const mutation = useMutation({
+        mutationFn: contactUs,
+        onSuccess: (data) => {
+            // if (data?.status === 200) {
+            toast.success(`Thank you for contacting us!`);
+            // }
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                message: ""
+            })
+        },
+        onError: (error) => {
+            errorHandler(error);
+        },
+    });
+
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
@@ -24,6 +47,8 @@ const Form = ({ contactData }: FormProps) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+
+        mutation.mutate({ ...formData })
     }
     return (
 
@@ -39,7 +64,13 @@ const Form = ({ contactData }: FormProps) => {
                     "w-full lg:w-1/2 rounded-full border border-theme-black text-theme-black bg-transparent px-6 py-3"
                 }
             >
-                <p className={"font-theme-font-roman"}>Send a Message</p>
+                <p className={"font-theme-font-roman flex items-center justify-center"}>
+
+                    {mutation?.isPending ? (
+                        <BlackAnimation />
+                    ) : (
+                        "Send a Message"
+                    )}</p>
             </button>
             <div
                 className={"flex mt-6 flex-col md:flex-row gap-4 w-full"}

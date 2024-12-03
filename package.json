@@ -29,6 +29,7 @@
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "next-sanity": "^9.4.7",
+    "nodemailer": "^6.9.16",
     "pnpm": "^9.9.0",
     "react": "^18",
     "react-dom": "^18",
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@types/authorizenet": "^1.0.2",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
     "@types/paypal__checkout-server-sdk": "^1.0.8",
     "@types/react": "^18",
     "@types/react-dom": "^18",

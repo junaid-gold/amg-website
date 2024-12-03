@@ -1,10 +1,9 @@
 import type { NextApiResponse } from "next"
 import { NextResponse } from "next/server"
-import mailchimp from 'mailchimp-api-v3';
+import nodemailer from 'nodemailer';
 
 export async function POST(req: Request, res: NextApiResponse) {
     try {
-        const mailchimpClient = new mailchimp(process.env.MAILCHIMP_API_KEY!);
 
         const { email, phone, message, name } = await req.json()
 
@@ -12,68 +11,32 @@ export async function POST(req: Request, res: NextApiResponse) {
             return res.status(400).json({ error: "Email is required" })
         }
 
-        const campaignOptions = {
-            type: 'regular',
-            recipients: { to_emails: ["hamzatasadaq51@gmail.com"] },
-            settings: {
-                subject_line: "subject",
-                reply_to: email,
-                from_name: email,
-            },
-        };
+        // Configure the SMTP transporter
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.mail.eu-west-1.awsapps.com', // Replace with your SMTP server (e.g., Gmail, Outlook)
+            port: 465, // Use 465 for secure, or 587 for non-secure
+            secure: true, // true for 465, false for other ports
+            auth: {
+                // user: "contact@audiomediagrading.com", // Your SMTP username
+                // pass: "AMG123dnh3SyyrSKha5gP*", // Your SMTP password
 
-        await mailchimpClient.request({
-            method: 'POST',
-            path: '/campaigns',
-            body: {
-                type: 'regular',
-                recipients: { list_id: 'eb77321d76' },
-                settings: {
-                    subject_line: "subject",
-                    reply_to: "hamzatasadaq51@gmail.com",
-                    from_name: name,
-                },
-                content: {
-                    plain_text: message,
-                },
+                user: "noreply@gurubook.de", // Your SMTP username
+                pass: "b4uYENJ.<8wr%fe7G>n6F", // Your SMTP password
             },
         });
-
-        // const MailchimpKey = process.env.MAILCHIMP_API_KEY
-        // const MailchimpServer = process.env.MAILCHIMP_API_SERVER
-        // const MailchimpAudience = process.env.MAILCHIMP_AUDIENCE_ID
-
-        // if (!MailchimpKey || !MailchimpServer || !MailchimpAudience) {
-        //     throw new Error("Missing Mailchimp environment variables")
-        // }
-
-        // const customUrl = `https://${MailchimpServer}.api.mailchimp.com/3.0/lists/${MailchimpAudience}/members`
-
-        // const response = await fetch(customUrl, {
-        //     method: "POST",
-        //     headers: {
-        //         Authorization: `Basic ${Buffer.from(
-        //             `anystring:${MailchimpKey}`
-        //         ).toString("base64")}`,
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         email_address: email,
-        //         status: "subscribed",
-        //     }),
-        // })
-
-        // if (!response.ok) {
-        //     const errorData = await response.json()
-        //     return NextResponse.json(
-        //         { error: errorData.detail },
-        //         { status: response.status }
-        //     )
-        // }
-
-        // const received = await response.json()
-        return NextResponse.json({})
+        // Send the email
+        const info = await transporter.sendMail({
+            from: '"Audio Media Grading" <noreply@gurubook.de>', // Sender address
+            to: "hamzatasadaq51@gmail.com", // Recipient address
+            // info@audiomediagrading.com
+            subject: "Contact Us", // Subject line
+            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}
+            `, // Plain text body
+            // html, // HTML body
+        });
+        return NextResponse.json({ message: "Email Sended" })
     } catch (error) {
+        console.log(error)
         return NextResponse.json(
             { error: "Internal Server Error" },
             { status: 500 }

@@ -6,7 +6,6 @@ import { redirect } from "next/navigation"
 export const getMySubmissionDetails = async (sku: string) => {
     try {
         if (sku.includes("-")) {
-
             const { data } = await axios.get(`${GET_PRODUCT}/${sku}`, {
                 headers: {
                     Authorization: `Bearer ${process.env.NEXT_PUBLIC_MAGENTO_ACCESS_TOKEN}`
