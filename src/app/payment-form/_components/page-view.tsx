@@ -40,6 +40,7 @@ const PageView = ({ addresses, cartMineTotal, paymentMethods, countries }: PageV
     }
   }, [addresses])
 
+  const grandTotal = cartMineTotal?.total_segments?.find((segment) => segment?.code === "grand_total")
   return (
     <div className="max-w-[68rem] mx-auto w-full flex flex-col md:flex-row items-start">
       <div className="w-full md:flex-1 p-6 md:border-r border-[#DEDEDE]">
@@ -83,6 +84,7 @@ const PageView = ({ addresses, cartMineTotal, paymentMethods, countries }: PageV
             selectedBillingAddress={selectedBillingAddress}
             isBothAddressSame={isBothAddressSame}
             setIsBothAddressSame={setIsBothAddressSame}
+            grandTotal={grandTotal?.value!}
           />
           <Links />
         </div>

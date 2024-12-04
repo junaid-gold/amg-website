@@ -31,6 +31,7 @@ interface PaymentMethodsProps {
 
   isBothAddressSame: boolean
   setIsBothAddressSame: Dispatch<SetStateAction<boolean>>
+  grandTotal: number
 }
 
 const PaymentMethods = ({
@@ -39,7 +40,8 @@ const PaymentMethods = ({
   selectedShippingAddress,
   selectedBillingAddress,
   isBothAddressSame,
-  setIsBothAddressSame
+  setIsBothAddressSame,
+  grandTotal
 }: PaymentMethodsProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -700,7 +702,7 @@ const PaymentMethods = ({
                                 {
                                   amount: {
                                     currency_code: "USD",
-                                    value: "10.00", // Payment amount
+                                    value: `${grandTotal}`, // Payment amount
                                   },
                                 },
                               ],
