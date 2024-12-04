@@ -30,8 +30,7 @@ export async function POST(req: Request, res: NextApiResponse) {
             to: "info@audiomediagrading.com", // Recipient address
             // info@audiomediagrading.com
             subject: "Contact Us", // Subject line
-            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}
-            `, // Plain text body
+            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`, // Plain text body
             // html, // HTML body
         });
         return NextResponse.json({ message: "Email Sended" })
