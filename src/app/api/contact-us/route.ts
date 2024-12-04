@@ -27,7 +27,7 @@ export async function POST(req: Request, res: NextApiResponse) {
         // Send the email
         const info = await transporter.sendMail({
             from: '"Audio Media Grading" <noreply@gurubook.de>', // Sender address
-            to: "hamzatasadaq51@gmail.com", // Recipient address
+            to: "info@audiomediagrading.com", // Recipient address
             // info@audiomediagrading.com
             subject: "Contact Us", // Subject line
             text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}
