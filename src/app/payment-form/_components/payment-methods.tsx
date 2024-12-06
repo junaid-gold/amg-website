@@ -711,7 +711,18 @@ const PaymentMethods = ({
                           }}
                           onApprove={(data, actions) => {
                             return actions.order!.capture().then((details) => {
-                              alert(`Transaction completed by `);
+                              // alert(`Transaction completed by `);
+
+                              const payloadToPass = {
+                                paymentMethod: {
+                                  method: "checkmo" as string,
+                                  extension_attributes: { agreement_ids: ["1"] },
+                                },
+                              };
+                              setPaymentMethodMutation.mutate({
+                                ...payloadToPass,
+                              });
+                              toast.success("Transaction successfull")
                             });
                           }}
                         />
