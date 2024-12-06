@@ -764,7 +764,8 @@ const PaymentMethods = ({
         disabled={
           !agreeWithTerms ||
           setShippingAddressMutation?.isPending ||
-          setPaymentMethodMutation?.isPending
+          setPaymentMethodMutation?.isPending ||
+          selectedPaymentMethod === "paypal_express"
         }
         className={
           `w-full rounded-full border  flex items-center justify-center px-2 py-4
