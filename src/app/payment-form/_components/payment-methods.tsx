@@ -203,12 +203,10 @@ const PaymentMethods = ({
       } else if (selectedPaymentMethod === "paypal_express") {
         const payloadToPass = {
           paymentMethod: {
-            method: "paypal_express" as string,
+            method: "checkmo" as string,
             extension_attributes: {
               agreement_ids: ["1"],
             },
-            additional_data: null,
-            po_number: null
           },
         };
         // @ts-ignore
@@ -711,18 +709,7 @@ const PaymentMethods = ({
                           }}
                           onApprove={(data, actions) => {
                             return actions.order!.capture().then((details) => {
-                              // alert(`Transaction completed by `);
-
-                              const payloadToPass = {
-                                paymentMethod: {
-                                  method: "checkmo" as string,
-                                  extension_attributes: { agreement_ids: ["1"] },
-                                },
-                              };
-                              setPaymentMethodMutation.mutate({
-                                ...payloadToPass,
-                              });
-                              toast.success("Transaction successfull")
+                              handlePlaceOrder()
                             });
                           }}
                         />
