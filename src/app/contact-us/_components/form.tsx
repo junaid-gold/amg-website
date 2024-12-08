@@ -2,17 +2,16 @@
 import React, { useState } from 'react'
 import { ContactType } from '@/types'
 import { contactDetails } from "@/data/contact-us.data"
-import { useMutation } from '@tanstack/react-query'
-import { contactUs } from '../actions'
-import { errorHandler } from '@/lib/utils'
 import toast from 'react-hot-toast'
 import BlackAnimation from '@/components/black-animation'
+import emailjs from '@emailjs/browser';
 
 interface FormProps {
     contactData: ContactType
 }
 
 const Form = ({ contactData }: FormProps) => {
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -20,23 +19,6 @@ const Form = ({ contactData }: FormProps) => {
         message: ""
     })
 
-    const mutation = useMutation({
-        mutationFn: contactUs,
-        onSuccess: (data) => {
-            // if (data?.status === 200) {
-            toast.success(`Thank you for contacting us!`);
-            // }
-            setFormData({
-                name: "",
-                email: "",
-                phone: "",
-                message: ""
-            })
-        },
-        onError: (error) => {
-            errorHandler(error);
-        },
-    });
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -45,10 +27,36 @@ const Form = ({ contactData }: FormProps) => {
         })
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setLoading(true)
+        const { name, phone, message, email } = formData
 
-        mutation.mutate({ ...formData })
+        const templateParams = {
+            name, phone, message, email
+        }
+        emailjs
+            .send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, templateParams, {
+                publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+            })
+            .then(
+                (response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    toast.success(`Thank you for contacting us!`);
+
+                    setFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        message: ""
+                    })
+                    setLoading(false)
+                },
+                (err) => {
+                    console.log('FAILED...', err);
+                },
+            );
+
     }
     return (
 
@@ -63,10 +71,11 @@ const Form = ({ contactData }: FormProps) => {
                 className={
                     "w-full lg:w-1/2 rounded-full border border-theme-black text-theme-black bg-transparent px-6 py-3"
                 }
+                disabled={loading}
             >
                 <p className={"font-theme-font-roman flex items-center justify-center"}>
 
-                    {mutation?.isPending ? (
+                    {loading ? (
                         <BlackAnimation />
                     ) : (
                         "Send a Message"

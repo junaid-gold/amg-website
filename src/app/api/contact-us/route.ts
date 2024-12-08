@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { NextApiResponse } from "next"
 import { NextResponse } from "next/server"
 import nodemailer from 'nodemailer';
@@ -11,27 +12,22 @@ export async function POST(req: Request, res: NextApiResponse) {
             return res.status(400).json({ error: "Email is required" })
         }
 
-        // Configure the SMTP transporter
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.mail.eu-west-1.awsapps.com', // Replace with your SMTP server (e.g., Gmail, Outlook)
-            port: 465, // Use 465 for secure, or 587 for non-secure
-            secure: true, // true for 465, false for other ports
-            auth: {
-                // user: "contact@audiomediagrading.com", // Your SMTP username
-                // pass: "AMG123dnh3SyyrSKha5gP*", // Your SMTP password
-
-                user: "noreply@gurubook.de", // Your SMTP username
-                pass: "b4uYENJ.<8wr%fe7G>n6F", // Your SMTP password
+        const emailPayload = {
+            service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Replace with your EmailJS service ID
+            template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, // Replace with your EmailJS template ID
+            user_id: "fwc-CTM8jaBXE-0QX", // Replace with your EmailJS public key
+            template_params: {
+                name, // Variables defined in your EmailJS template
+                email,
+                phone,
+                message,
             },
-        });
-        // Send the email
-        const info = await transporter.sendMail({
-            from: '"Audio Media Grading" <noreply@gurubook.de>', // Sender address
-            to: "info@audiomediagrading.com", // Recipient address
-            // info@audiomediagrading.com
-            subject: "Contact Us", // Subject line
-            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`, // Plain text body
-            // html, // HTML body
+        };
+
+        const emailJSResponse = await axios.post("https://api.emailjs.com/api/v1.0/email/send", emailPayload, {
+            headers: {
+                "Content-Type": "application/json",
+            }
         });
         return NextResponse.json({ message: "Email Sended" })
     } catch (error) {
