@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@datadog/browser-rum':
+    specifier: ^5.32.0
+    version: 5.32.0
   '@emailjs/browser':
     specifier: ^4.4.1
     version: 4.4.1
@@ -1555,6 +1558,28 @@ packages:
       colorspace: 1.1.4
       enabled: 2.0.0
       kuler: 2.0.0
+    dev: false
+
+  /@datadog/browser-core@5.32.0:
+    resolution: {integrity: sha512-+RnQZRda/XwjP2v8TZHIIbZItS1xlRYVs7OmueaA+/MItj0DiL8hZ4uIj7eLsNUXGS0qsiGHXWkaBZE2HfWuvQ==}
+    dev: false
+
+  /@datadog/browser-rum-core@5.32.0:
+    resolution: {integrity: sha512-SJb8Qmixc82+m613kR3aO31qOD+EhbVY8eMEJ8hYMs1r0LrWGbmEWFWmA86239W5pD4QyRy9ruvs5O/I0S6c1A==}
+    dependencies:
+      '@datadog/browser-core': 5.32.0
+    dev: false
+
+  /@datadog/browser-rum@5.32.0:
+    resolution: {integrity: sha512-Okiu/zTV/sgglGsMAtznqcoy+iwXDjGQ3PkHwZw2jAY/clDcoLbaOPGXeIHXh15E/zk8YALHkC/RW58DFv29lg==}
+    peerDependencies:
+      '@datadog/browser-logs': 5.32.0
+    peerDependenciesMeta:
+      '@datadog/browser-logs':
+        optional: true
+    dependencies:
+      '@datadog/browser-core': 5.32.0
+      '@datadog/browser-rum-core': 5.32.0
     dev: false
 
   /@dnd-kit/accessibility@3.1.0(react@18.3.1):

@@ -10,6 +10,7 @@ import "@/styles/animation.css"
 import "@/styles/globals.css"
 import Script from "next/script"
 import PaypalProvider from "@/components/providers/paypal-provider"
+import DataDog from "@/components/providers/data-dog"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -62,6 +63,7 @@ export default async function RootLayout({
         <title>AMG</title>
       </head>
       <body className={inter.className}>
+        <DataDog />
         <QueryProvider>
           <Toast />
           <AuthProvider session={session}>
