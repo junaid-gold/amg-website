@@ -27,6 +27,19 @@ const RadioInput = ({ value }: RadioStepProps) => {
                 }`
             }
             key={value?.option_type_id}
+            onClick={() => {
+                if (!isSelected) {
+                    if (value?.title !== "None" && value?.title !== "Grade") {
+                        updateCustomOption(
+                            value?.option_id,
+                            value?.option_type_id,
+                            value?.price
+                        );
+                    } else {
+                        removeCustomOption(value?.option_id)
+                    }
+                }
+            }}
         >
             <div className={"flex items-center relative gap-6"}>
                 <input

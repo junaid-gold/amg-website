@@ -16,6 +16,8 @@ const CheckboxInput = ({ value }: CheckboxInputProps) => {
         cartItem?.product_option?.extension_attributes?.custom_options?.find(
             (custom_option) => custom_option?.option_id === value?.option_id
         )
+    const isSelected = value?.title === "None" || value?.title === "Grade" ? selectedOne?.option_id?.toString() ? false : true : selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
+
     return (
         <div
             className={
@@ -23,6 +25,17 @@ const CheckboxInput = ({ value }: CheckboxInputProps) => {
                 }`
             }
             key={value?.option_type_id}
+            onClick={() => {
+                if (!isSelected) {
+                    updateCustomOption(
+                        value?.option_id,
+                        value?.option_type_id,
+                        value?.price
+                    );
+                } else {
+                    removeCustomOption(value?.option_id)
+                }
+            }}
         >
             <div className={"flex items-center relative gap-6"}>
                 <input
