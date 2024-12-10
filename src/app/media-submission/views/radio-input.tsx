@@ -18,7 +18,7 @@ const RadioInput = ({ value }: RadioStepProps) => {
         )
 
 
-    const isSelected = value?.title === "None" ? selectedOne?.option_id?.toString() ? false : true : selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
+    const isSelected = value?.title === "None" || value?.title === "Grade" ? selectedOne?.option_id?.toString() ? false : true : selectedOne?.option_value?.toString() === value?.option_type_id?.toString() || filteredCustomOption?.option_value?.toString() === value?.option_type_id?.toString()
 
     return (
         <div
@@ -32,7 +32,7 @@ const RadioInput = ({ value }: RadioStepProps) => {
                 <input
                     onChange={(e) => {
                         if (!isSelected) {
-                            if (value?.title !== "None") {
+                            if (value?.title !== "None" && value?.title !== "Grade") {
                                 updateCustomOption(
                                     value?.option_id,
                                     value?.option_type_id,
