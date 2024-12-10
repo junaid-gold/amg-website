@@ -53,6 +53,12 @@ const RadioInput = ({ value }: RadioStepProps) => {
                     {value?.title}
                 </label>
             </div>
+            {
+                value?.title === "Grade" &&
+                <div className={"bg-[#8DE1F3] px-2 py-1 rounded-full text-xs"}>
+                    $0
+                </div>
+            }
             {value?.price ? (
                 <div className={"bg-[#8DE1F3] px-2 py-1 rounded-full text-xs"}>
                     ${value?.price}
