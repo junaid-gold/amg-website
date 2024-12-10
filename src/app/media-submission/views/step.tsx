@@ -173,8 +173,11 @@ const Step = ({ isLast, option, accordion, setAccordion, customOptions }: StepPr
                                     <>
                                         {
                                             !option?.is_require &&
-                                            // @ts-ignore
-                                            <RadioInput value={{ option_id: option?.option_id, title: "None", }} />
+                                                option?.title === "Type of Service" ?
+                                                // @ts-ignore
+                                                <RadioInput value={{ option_id: option?.option_id, title: "Grade", price: "0" }} /> :
+                                                // @ts-ignore
+                                                <RadioInput value={{ option_id: option?.option_id, title: "None", }} />
                                         }
                                         {option?.values?.map((value) => (
                                             <RadioInput
