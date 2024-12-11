@@ -54,6 +54,15 @@ const Form = ({ contactData }: FormProps) => {
                 },
                 (err) => {
                     console.log('FAILED...', err);
+
+                    setFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        message: ""
+                    })
+                    setLoading(false)
+
                 },
             );
 
