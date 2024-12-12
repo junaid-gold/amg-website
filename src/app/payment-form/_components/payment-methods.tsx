@@ -267,11 +267,11 @@ const PaymentMethods = ({
       if (data?.data) {
         setLoading(false);
         createSubmission(data?.data)
-        window.open(`https://store.audiomediagrading.com/webservices/print/?order=${data?.data}&key=9813y89cryn234ydn`, "_blank")
         queryClient?.invalidateQueries({ queryKey: ["customerCart"] });
         queryClient?.invalidateQueries({ queryKey: ["customerCartItems"] });
         toast.success(`Your Order is placed`);
-        router.push(`/`);
+        router.push("/thanks")
+        // router.push(`/`);
       }
     },
   });

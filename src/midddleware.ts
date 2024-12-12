@@ -18,5 +18,5 @@ export default async function middleware(req: NextRequest) {
 
 // Specify which pages are protected
 export const config = {
-    matcher: ['/payment-form', "/checkout", "/account", "/orders/:path*", "/single-page-form"]
+    matcher: ['/payment-form', "/thanks", "/checkout", "/account", "/orders/:path*", "/single-page-form"]
 };
