@@ -29,7 +29,7 @@ const RadioInput = ({ value }: RadioStepProps) => {
             key={value?.option_type_id}
             onClick={() => {
                 if (!isSelected) {
-                    if (value?.title !== "None" && value?.title !== "Grade") {
+                    if (value?.title !== "None" && value?.title !== "Grading (We authenticate, document, label and case with a grade)") {
                         updateCustomOption(
                             value?.option_id,
                             value?.option_type_id,

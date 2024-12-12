@@ -175,7 +175,7 @@ const Step = ({ isLast, option, accordion, setAccordion, customOptions }: StepPr
                                             !option?.is_require &&
                                                 option?.title === "Type of Service" ?
                                                 // @ts-ignore
-                                                <RadioInput value={{ option_id: option?.option_id, title: "Grade" }} /> :
+                                                <RadioInput value={{ option_id: option?.option_id, title: "Grading (We authenticate, document, label and case with a grade)" }} /> :
                                                 // @ts-ignore
                                                 <RadioInput value={{ option_id: option?.option_id, title: "None", }} />
                                         }
