@@ -68,12 +68,22 @@ const Page = async () => {
         <>
             <div
                 className={
-                    "flex flex-col flex-1  pt-[36px] xl:pt-0 md:pt-[15px] pb-[120px]"
+                    "flex flex-col flex-1  pt-[36px] xl:pt-0 md:pt-[15px]"
                 }
             >
                 <div className="px-[26px] md:px-0 flex flex-col w-full">
-                    <div className="text-[34px] md:text-[54px] xl:text-[64px] text-[#030303] leading-[110%] md:leading-[120%] tracking-[0.68px] md:tracking-[-1.08px] xl:tracking-[-1.28px] py-[24px] md:py-[32px] xl:py-[104px] px-[26px] bg-[#EBEAE2] flex items-center justify-center font-theme-font-medium">
-                        Grading Scale
+                    <div className="py-[24px]  md:py-[32px] xl:py-[104px] px-[26px] bg-[#EBEAE2]  ">
+                        <div className="mx-auto max-w-[1050px] md:px-[50px] space-y-4">
+                            <div className="text-[34px] text-center md:text-[54px] xl:text-[64px] font-theme-font-medium text-[#030303] leading-[110%] md:leading-[120%] tracking-[0.68px] md:tracking-[-1.08px] xl:tracking-[-1.28px] ">
+                                Grading Scale
+                            </div>
+                            <p className="text-center">
+                                <PortableText components={components} value={tocData?.amgGradingScale} />
+                            </p>
+                            <div className="flex items-center justify-center w-full">
+                                <button className="border border-[#252422] rounded-full font-semibold text-lg py-4 max-w-80 w-full">See the scale</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -82,7 +92,6 @@ const Page = async () => {
                     <div className="text-[18px] leading-[147%] tracking-[0.18px]">
                         <div className="font-theme-font-bold">AMG GRADING SCALE:</div>
                         <div className="font-theme-font-light">
-                            <PortableText components={components} value={tocData?.amgGradingScale} />
                         </div>
                     </div>
                     {/* Section */}
@@ -100,69 +109,22 @@ const Page = async () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-[45px] md:mt-[30px] xl:mt-[76px] px-[40px] md:px-[50px] gap-x-[28px] xl:gap-x-[62px] gap-y-[40px] mx-auto max-w-[1050px] w-full">
-
-                    <div className="relative w-full">
-                        <div
-                            className="border border-[#F2F1F1] border-r-0 lg:border-theme-gray flex gap-2 overflow-x-auto w-full"
-                        >
-                            <div className={"xl:w-full"}>
-                                {/* Header */}
-                                <div className="bg-white w-full justify-start items-start flex">
-                                    <div className="w-full border-r border-r-[#F2F1F1] lg:border-r-theme-gray max-w-[150px] p-6 justify-start items-center gap-2 flex">
-                                        <div className="text-theme-black text-[18px] lg:text-[24px] text-center font-theme-font-medium leading-[21px]">
-                                            Overall Grade
-                                        </div>
+                <div className="bg-[#252422] border-b px-4 py-10 md:py-20 md:px-8">
+                    <div className="mx-auto max-w-[1050px] md:px-[50px] w-full">
+                        <ul className="space-y-8">
+                            {modules.map((value, index) => (
+                                <li key={index} className="flex flex-col md:flex-row items-start gap-6 md:gap-10">
+                                    <div className="border-4 min-w-56 md:min-w-60 border-[#F4F0ED] rounded-xl pt-6 ">
+                                        <h1 className="text-[#F4F0ED] text-center font-semibold text-[96px]">{value?.numericGrade}</h1>
+                                        <p className="bg-[#F4F0ED] mt-4 text-center font-semibold text-lg text-[#252422] w-full">{value?.overallGrade}</p>
                                     </div>
-                                    <div className="w-full border-r border-r-[#F2F1F1] lg:border-r-theme-gray max-w-[130px] p-6 justify-start items-center gap-2 flex">
-                                        <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium text-center leading-[21px]">
-                                            Numeric Grade
-                                        </div>
+                                    <div className="text-[#F4F0ED]">
+                                        <h1 className="font-semibold text-3xl">{value?.overallGrade}</h1>
+                                        <PortableText components={components} value={value?.description} />
+                                        <PortableText components={components} value={value?.examples} />
                                     </div>
-                                    <div className="w-full p-6 border-r border-r-[#F2F1F1] lg:border-r-theme-gray min-w-[250px] justify-start items-center gap-2 flex">
-                                        <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium leading-[21px]">
-                                            Description
-                                        </div>
-                                    </div>
-                                    <div className="w-full p-6 border-r border-r-[#F2F1F1] lg:border-r-theme-gray min-w-[150px] justify-start items-center gap-2 flex">
-                                        <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-medium leading-[21px]">
-                                            Example
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Body */}
-                                {
-                                    modules.map((value, index) => (
-                                        <div
-                                            key={index}
-
-                                            className={`${index % 2 === 1 ? "bg-theme-gray" : "bg-white"} w-full justify-start items-start flex`}
-                                        >
-                                            <div className="w-full p-6 border-r border-r-[#F2F1F1] lg:border-r-theme-gray max-w-[150px] justify-center items-start gap-2 flex">
-                                                <div className="text-theme-black text-[18px] lg:text-[24px] text-center font-theme-font-light leading-[21px]">
-                                                    {value?.overallGrade}
-                                                </div>
-                                            </div>
-                                            <div className="w-full border-r border-r-[#F2F1F1] lg:border-r-theme-gray max-w-[130px] p-6 justify-center items-start gap-2 flex">
-                                                <div className="text-theme-black text-[18px] lg:text-[24px] text-center font-theme-font-light leading-[21px]">
-                                                    {value?.numericGrade}
-                                                </div>
-                                            </div><div className="w-full p-6 border-r border-r-[#F2F1F1] lg:border-r-theme-gray min-w-[250px] justify-start items-center gap-2 flex">
-                                                <div className="text-theme-black text-[18px] lg:text-[24px] overflow-hidden text-ellipsis font-theme-font-light leading-[24px] break-words">
-                                                    <PortableText components={components} value={value?.description} />
-                                                </div>
-                                            </div>
-
-                                            <div className="w-full p-6 border-r border-r-[#F2F1F1] lg:border-r-theme-gray min-w-[150px] justify-start items-start gap-2 flex">
-                                                <div className="text-theme-black text-[18px] lg:text-[24px] font-theme-font-light leading-[21px]">
-                                                    <PortableText components={components} value={value?.examples} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                            </div>
-                        </div>
+                                </li>))}
+                        </ul>
                     </div>
                 </div>
             </div>
