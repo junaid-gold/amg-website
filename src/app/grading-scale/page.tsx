@@ -87,25 +87,46 @@ const Page = async () => {
                     </div>
                 </div>
 
-                <div className="text-[#100F0F] flex flex-col mt-[45px] md:mt-[30px] xl:mt-[76px] px-[40px] md:px-[50px] gap-x-[28px] xl:gap-x-[62px] gap-y-[40px] mx-auto max-w-[1050px]">
+                <div className="text-[#100F0F] flex flex-col px-[40px] md:px-[50px] gap-x-[28px] xl:gap-x-[62px] gap-y-[40px] mx-auto max-w-[1050px]">
+
+
                     {/* Section */}
-                    <div className="text-[18px] leading-[147%] tracking-[0.18px]">
-                        <div className="font-theme-font-bold">AMG GRADING SCALE:</div>
-                        <div className="font-theme-font-light">
+                    <div className="py-10 md:py-20">
+                        <div className="text-[18px] leading-[147%] tracking-[0.18px]">
+                            <div className="max-w-[648px] mx-auto">
+                                <div className="font-theme-font-bold text-center mb-6 text-3xl">For open and loose vinyl – AMG looks at four components for each submitted open item:</div>
+                            </div>
+                            <div className="grid gap-6 my-6 sm:grid-cols-2 md:grid-cols-4">
+                                <div className="flex flex-col items-center justify-center">
+                                    <h1 className="text-[#E0DFD5] font-semibold text-[80px] leading-[80px]">01</h1>
+                                    <h4 className="text-[#252422] font-semibold text-xl">The Record</h4>
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+                                    <h1 className="text-[#E0DFD5] font-semibold text-[80px] leading-[80px]">02</h1>
+                                    <h4 className="text-[#252422] font-semibold text-xl">Record Labels</h4>
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+                                    <h1 className="text-[#E0DFD5] font-semibold text-[80px] leading-[80px]">03</h1>
+                                    <h4 className="text-[#252422] font-semibold text-xl">The Cover</h4>
+                                </div>
+                                <div className="flex flex-col items-center justify-center">
+                                    <h1 className="text-[#E0DFD5] font-semibold text-[80px] leading-[80px]">04</h1>
+                                    <h4 className="text-[#252422] font-semibold text-xl">Shrink Wrap</h4>
+                                </div>
+                            </div>
+                            <div className="font-theme-font-light">
+                                <PortableText components={components} value={tocData?.vinyl} />
+                            </div>
                         </div>
                     </div>
+
                     {/* Section */}
-                    <div className="text-[18px] leading-[147%] tracking-[0.18px]">
-                        <div className="font-theme-font-bold">VINYL:</div>
-                        <div className="font-theme-font-light">
-                            <PortableText components={components} value={tocData?.vinyl} />
-                        </div>
-                    </div>
-                    {/* Section */}
-                    <div className="text-[18px] leading-[147%] tracking-[0.18px]">
-                        <div className="font-theme-font-bold">CASSETTES, CDs & 8-TRACKS:</div>
-                        <div className="font-theme-font-light">
-                            <PortableText components={components} value={tocData?.cassettesCdsAndTracks} />
+                    <div className="pb-10 md:pb-20">
+                        <div className="text-[18px] leading-[147%] tracking-[0.18px]">
+                            <div className="font-theme-font-bold text-center mb-6 text-3xl">CASSETTES, CDs & 8-TRACKS</div>
+                            <div className="font-theme-font-light">
+                                <PortableText components={components} value={tocData?.cassettesCdsAndTracks} />
+                            </div>
                         </div>
                     </div>
                 </div>
