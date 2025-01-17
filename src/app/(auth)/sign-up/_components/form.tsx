@@ -89,16 +89,18 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
               <input
                 {...register("customer.firstname")}
                 placeholder={"First name"}
-                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.firstname?.message === "Required" &&
+                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.customer?.firstname?.message === "Required" &&
                   "border-red-500 placeholder-red-500"
-                  }`}
+                }`}
               />
               <input
                 {...register("customer.lastname")}
                 placeholder={"Last name"}
-                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.lastname?.message === "Required" &&
+                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.customer?.lastname?.message === "Required" &&
                   "border-red-500 placeholder-red-500"
-                  }`}
+                }`}
               />
             </div>
           </div>
@@ -112,9 +114,10 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
               <select
                 defaultValue={""}
                 {...register("customer.addresses.0.country_id")}
-                className={`appearance-none rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.country_id?.message ===
-                  "Required" && "border-red-500 placeholder-red-500"
-                  }`}
+                className={`appearance-none rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.customer?.addresses?.[0]?.country_id?.message ===
+                    "Required" && "border-red-500 placeholder-red-500"
+                }`}
               >
                 <option value="" disabled>
                   Country
@@ -160,32 +163,36 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
             <input
               {...register("customer.addresses.0.company")}
               placeholder={"Company"}
-              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.company?.message ===
-                "Required" && "border-red-500 placeholder-red-500"
-                }`}
+              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                errors?.customer?.addresses?.[0]?.company?.message ===
+                  "Required" && "border-red-500 placeholder-red-500"
+              }`}
             />
             <input
               {...register("customer.addresses.0.street.0")}
               placeholder={"Address line 1"}
-              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.street?.[0]?.message ===
-                "Required" && "border-red-500 placeholder-red-500"
-                }`}
+              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                errors?.customer?.addresses?.[0]?.street?.[0]?.message ===
+                  "Required" && "border-red-500 placeholder-red-500"
+              }`}
             />
             <input
               {...register("customer.addresses.0.street.1")}
               placeholder={"Address line 2"}
-              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.street?.[1]?.message ===
-                "Required" && "border-red-500 placeholder-red-500"
-                }`}
+              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                errors?.customer?.addresses?.[0]?.street?.[1]?.message ===
+                  "Required" && "border-red-500 placeholder-red-500"
+              }`}
             />
             <div className="flex w-full items-center flex-col md:flex-row gap-5">
               <input
                 {...register("customer.addresses.0.city")}
                 type="text"
                 placeholder={"City"}
-                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.city?.message ===
-                  "Required" && "border-red-500 placeholder-red-500"
-                  }`}
+                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.customer?.addresses?.[0]?.city?.message ===
+                    "Required" && "border-red-500 placeholder-red-500"
+                }`}
               />
 
               {countries?.find(
@@ -196,10 +203,11 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
                   <select
                     defaultValue={""}
                     {...register("customer.addresses.0.region.region_id")}
-                    className={`appearance-none rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.region?.region_id
-                      ?.message === "Required" &&
+                    className={`appearance-none rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                      errors?.customer?.addresses?.[0]?.region?.region_id
+                        ?.message === "Required" &&
                       "border-red-500 placeholder-red-500"
-                      }`}
+                    }`}
                   >
                     <option value="" disabled>
                       State
@@ -241,10 +249,11 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
                   placeholder={"Region"}
                   className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent
                     
-                      ${errors?.customer?.addresses?.[0]?.region?.region
-                      ?.message === "Required" &&
-                    "border-red-500 placeholder-red-500"
-                    }
+                      ${
+                        errors?.customer?.addresses?.[0]?.region?.region
+                          ?.message === "Required" &&
+                        "border-red-500 placeholder-red-500"
+                      }
                   `}
                 />
               )}
@@ -253,9 +262,10 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
                 {...register("customer.addresses.0.postcode")}
                 type="number"
                 placeholder={"Postal / Zip"}
-                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.postcode?.message ===
-                  "Required" && "border-red-500 placeholder-red-500"
-                  }`}
+                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.customer?.addresses?.[0]?.postcode?.message ===
+                    "Required" && "border-red-500 placeholder-red-500"
+                }`}
               />
             </div>
 
@@ -263,9 +273,10 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
               {...register("customer.addresses.0.telephone")}
               type="number"
               placeholder={"Phone number"}
-              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.addresses?.[0]?.telephone?.message ===
-                "Required" && "border-red-500 placeholder-red-500"
-                }`}
+              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                errors?.customer?.addresses?.[0]?.telephone?.message ===
+                  "Required" && "border-red-500 placeholder-red-500"
+              }`}
             />
           </div>
 
@@ -276,18 +287,20 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
             <input
               {...register("customer.email")}
               placeholder={"Email"}
-              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.email?.message &&
+              className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                errors?.customer?.email?.message &&
                 "border-red-500 placeholder-red-500"
-                }`}
+              }`}
             />
             <div className="space-y-1.5">
               <input
                 {...register("password")}
                 type="password"
                 placeholder={"Password"}
-                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.password?.message &&
+                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.password?.message &&
                   "border-red-500 placeholder-red-500"
-                  }`}
+                }`}
               />
 
               <p className="text-red-500 font-light text-xs">
@@ -304,9 +317,10 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
                 {...register("confirmPassword")}
                 type="password"
                 placeholder={"Confirm Password"}
-                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.confirmPassword?.message === "Required" &&
+                className={`rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.confirmPassword?.message === "Required" &&
                   "border-red-500 placeholder-red-500"
-                  }`}
+                }`}
               />
               {watch("confirmPassword")?.length > 0 &&
                 watch("confirmPassword") !== watch("password") && (
@@ -324,9 +338,10 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
             <div className="w-full relative">
               <select
                 {...register("customer.custom_attributes.0.value")}
-                className={`appearance-none rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${errors?.customer?.custom_attributes?.[0]?.value?.message ===
-                  "Required" && "border-red-500 placeholder-red-500"
-                  }`}
+                className={`appearance-none rounded-lg px-5 py-3 border w-full border-[#B6B4A2] text-[#100F0F] opacity-60 bg-transparent  ${
+                  errors?.customer?.custom_attributes?.[0]?.value?.message ===
+                    "Required" && "border-red-500 placeholder-red-500"
+                }`}
               >
                 {attributeDetails?.options?.map((attribute) => (
                   <option key={attribute?.value} value={attribute?.value}>
@@ -376,11 +391,7 @@ const Form = ({ countries, attributeDetails }: FormProps) => {
             disabled={mutation?.isPending}
           >
             <p className={"font-theme-font-roman"}>
-              {mutation?.isPending ? (
-                <WhiteAnimation />
-              ) : (
-                "Login"
-              )}
+              {mutation?.isPending ? <WhiteAnimation /> : "Create"}
             </p>
           </button>
           <Link
